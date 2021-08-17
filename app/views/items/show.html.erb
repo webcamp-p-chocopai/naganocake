@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-xs-3">
+    #ジャンル検索のsidevar入れる
+  </div>
+  <div class="col-xs-4">
+    <div class="item-image">
+      <%= attachment_image_tag @item, :item_image, 100, 100, fallback: "no_image_jpg" %>
+    </div>
+  </div>
+  <div class="col-xs-5">
+    <div class="item-detail">
+      <h2><%= @item.item_name %></h2>
+      <p><%= @item.item_explanation %></p>
+      <h3 class="item-price">¥<%= (@item.non_taxed_price * 1.1).to_i %>(税込)</h3>
+    </div>
+  </div>
+</div>
