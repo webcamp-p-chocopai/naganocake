@@ -14,7 +14,7 @@
       <h3 class="item-price">¥<%= (@item.non_taxed_price * 1.1).to_i %>(税込)</h3>
       <%= form_with model: @cart_item, cart_items_path, method: :post, do |f| %>
         <%= f.label :item_qty, "個数選択" %>
-        <%= f.number_feild :item_qty, placeholder: '個数選択', class: "quantity-select-form" %>
+        <%= f.number_field :item_qty, placeholder: '個数選択', class: "quantity-select-form" %>
         <%= f..hidden_field :id, :value => @item.id %>
         <%= f.submit "カートに入れる", class: "btn btn-primary" %>
       <% end %>
