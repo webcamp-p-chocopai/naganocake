@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :customers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+
   scope module: :customers do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
 
     resources :orders, only: [:index, :show, :new, :create]
-    post '/orders/cheak' => "orders#check", as: 'orders_check'
+    post '/orders/check' => "orders#check", as: 'orders_check'
     get '/orders/thanks' => "orders#thanks", as: 'orders_thanks'
   end
 
