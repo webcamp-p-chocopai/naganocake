@@ -7,6 +7,7 @@ class Customers::OrdersController < ApplicationController
   end
   
   def new
+    @item_image = current_custmer.cart_items
   end
   
   def create
