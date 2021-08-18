@@ -1,5 +1,6 @@
-<h2>Log in</h2>
-
+<h2>ログイン</h2>
+<div>
+  <p>会員の方はこちらからログイン</p>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -22,5 +23,11 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+</div>
 
+<div>
+  <p>会員登録がお済みで無い方</p>
+  <p>こちらから新規登録を行なってください</p>
+  <p><%= link_to("こちら", new_customer_registration_path ) %>から新規登録を行なってください。</p>
+</div>
 <%= render "devise/shared/links" %>

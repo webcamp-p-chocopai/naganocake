@@ -1,0 +1,27 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'homes/genres-search' %>
+    </div>
+    <div class='col-md-8 offset-md-2'>
+      <div>
+        ようこそ、ながのCAKEへ！<br>
+        このサイトでは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
+      </div>
+    </div>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-md-8 offset-md-3'>
+    <h2>新着商品</h2>
+    <table class='table'>
+      <tr><%#= attachment_image_tag(@item, :item_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+      <tr>
+        <th><%#= @item.item_name %></th>
+	      <th><%#= @item.non_taxed_price %></th>
+	    </tr>
+    </table>
+  </div>
+</div
