@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, except: [:top, :about]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -11,8 +10,9 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
-  #デバイスでは初期設定でメールアドレスとパスワードしか許されていない。他のを追加するには要編集
+  protected
+  
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_last_name, :kana_first_name, :cust_postal_code, :cust_address, :phone_number])
   end
 end

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
 
     resources :orders, only: [:index, :show, :new, :create]
-    post '/orders/cheak' => "orders#check", as: 'orders_check'
+    post '/orders/check' => "orders#check", as: 'orders_check'
     get '/orders/thanks' => "orders#thanks", as: 'orders_thanks'
   end
 
