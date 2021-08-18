@@ -15,7 +15,7 @@
       <%= form_with model: @cart_item, cart_items_path, method: :post, do |f| %>
         <%= f.label :item_qty, "個数選択" %>
         <%= f.number_field :item_qty, placeholder: '個数選択', class: "quantity-select-form" %>
-        <%= f..hidden_field :id, :value => @item.id %>
+        <%= f.hidden_field :id, :value => @item.id %>
         <%= f.submit "カートに入れる", class: "btn btn-primary" %>
       <% end %>
     </div>
