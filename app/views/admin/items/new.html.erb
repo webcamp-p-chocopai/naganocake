@@ -1,6 +1,6 @@
 <h1>商品新規登録</h1>
 <!-- form_with部分 -->
-<%= form_with model:@item, local:true do |f| %>
+<%= form_with model:@item,url:admin_items_path, local:true do |f| %>
 
   <h4>商品画像</h4>
   <%= f.attachment_field :item_image %>
@@ -18,8 +18,8 @@
   <%= f.text_field :non_taxed_price %>
   
   <h4>販売ステータス</h4>
-  　<%= form.radio_button :sale_status, :true %>販売中
-  　<%= form.radio_button :sale_status, :false %>販売停止中
+  　<%= f.radio_button :sale_status, :true %>販売中
+  　<%= f.radio_button :sale_status, :false %>販売停止中
 
   <%= f.submit '新規登録' %>
   

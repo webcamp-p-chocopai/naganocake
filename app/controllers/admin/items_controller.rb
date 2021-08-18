@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
-　
-　def show
+  
+  def show
   end
 
   def index
@@ -8,8 +8,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
-　　@item = Item.new
-　　@genres = Genre.all
+    @item = Item.new
+    @genres = Genre.all
   end
 
   def create
