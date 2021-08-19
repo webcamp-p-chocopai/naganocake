@@ -5,7 +5,8 @@
         <table class='table'>
           <tr>
             <td>注文日</td>
-            <td><%= @order.created_at %></td>
+            <!--strftime分かってないから調べる-->
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
             <td>配送先</td>
@@ -26,15 +27,17 @@
       <table class='table'>
         <tr>
           <td>商品合計</td>
-          <td><%= order.taxed_billing_price.add_tax_price.to_s(:delimited) %> 円 %></td>
+          <!-- 商品の合計金額を表示、注文確定後だから税率かけなくてもいい？-->
+          <td><%= @order.taxed_billing_price.add_tax_price.to_s(:delimited) %> %></td>
         <tr>
           <tr>
           <td>配送料</td>
-          <td>800</td>
+          <td><%= @freight %></td>
         </tr>
         <tr>
           <td>ご請求金額</td>
-          <td><%= order.taxed_billing_price.add_tax_price.to_s+800(:delimited) %> 円 %></td>
+          <!--送料を足す調べる-->
+          <td><%= @order.taxed_billing_price.add_tax_price.to_s(:delimited) %> %></td>
         </tr>
       </table>
     </div>
@@ -51,12 +54,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @order.each do |order| %>
+          <% @order_items.each do |order_item| %>
             <tr>
-              <td><%= order.order_items.item_id %></td>
-              <td><%= order.order_items. %></td>
-              <td></td>
-              <td><%= order.taxed_billing_price.add_tax_price.to_s+800(:delimited) %> 円 %></td>
+              <td><%= order_item.item.item_name %></td>
+              <td><%= order_item.item.non_taxed_price.add_tax_price.to_s(:delimited) %></td>
+              <td><%= order_item.purchase_quantity %></td>
+              <td><%= order_item.add_tax_price.to_s(:delimited) %> 円 %></td>
             </tr>
           <% end %>
         </tbody>
