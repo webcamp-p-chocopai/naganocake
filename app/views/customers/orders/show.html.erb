@@ -1,0 +1,66 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-5'>
+      <h3>注文情報</h3>
+        <table class='table'>
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at %></td>
+          </tr>
+          <tr>
+            <td>配送先</td>
+            <td><%= @order.dear_address %></td>
+          </tr>
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.method_of_payment %></td>
+          </tr>
+          <tr>
+            <td>ステータス</td>
+            <td><%= @orderd_status %></td>
+          </tr>
+        </table>
+    </div>
+    <div class='col-md-3'>
+      <h3>請求金額</h3>
+      <table class='table'>
+        <tr>
+          <td>商品合計</td>
+          <td><%= order.taxed_billing_price.add_tax_price.to_s(:delimited) %> 円 %></td>
+        <tr>
+          <tr>
+          <td>配送料</td>
+          <td>800</td>
+        </tr>
+        <tr>
+          <td>ご請求金額</td>
+          <td><%= order.taxed_billing_price.add_tax_price.to_s+800(:delimited) %> 円 %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-8'>
+      <table class='table'>
+        <thead>
+          <tr>
+            <td>商品</td>
+            <td>単価（税込）</td>
+            <td>個数</td>
+            <td>小計</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.each do |order| %>
+            <tr>
+              <td><%= order.order_items.item_id %></td>
+              <td><%= order.order_items. %></td>
+              <td></td>
+              <td><%= order.taxed_billing_price.add_tax_price.to_s+800(:delimited) %> 円 %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<div>
