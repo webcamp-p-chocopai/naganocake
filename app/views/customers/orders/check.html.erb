@@ -1,5 +1,5 @@
-<%# ブートストラップは後から記述します　%>
-<%# 注文情報確認画面　%>
+<!-- ブートストラップは後から記述します-->
+<!-- 注文情報確認画面　-->
 <div>
   <h3><b>注文情報確認</h3>
   <div>
@@ -17,42 +17,40 @@
           <%= cart_items.item.item_name %>
         </td>
         <td>
-          @<%= (cart_items.item.non_taxed_price * 110).ceil.to_s(:delimited) %>-
+          @<%= (cart_items.item.non_taxed_price * 110).round.to_s(:delimited) %>-
         </td>
         <td>
           <%= cart_items.qty %>
         </td>
         <td>
-          ¥<%= ((cart_items.item.non_taxed_price * 110).ceil * cart_items.qty).to_s(:delimited) %>-
+          ¥<%= ((cart_items.item.non_taxed_price * 110).round * cart_items.qty).to_s(:delimited) %>-
         </td>
       </tr>
       <% end %>
     </table>
-  </div>]
+  </div>
   <div>
     <table>
       <tr>
         <th>送料</th>
-        <td>
-          
-        </td>
+        <td></td>
       </tr>
       <tr>
         <th>商品合計</th>
         <td>
-          
+          <%= %>
         </td>
       </tr>
       <tr>
         <th>請求金額</th>
         <td>
-          
+          <%=%>
         </td>
       </tr>
     </table>
     <strong>支払方法</strong><br>
-    <%= @.method_of_payment %>
+      <%=%>
     <strong>お届け先</strong><br>
-    
+      <%=%>
   </div>
 </div>

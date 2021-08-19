@@ -1,0 +1,35 @@
+<!-- ブートストラップは後から記述します-->
+<!-- ジャンル編集画面-->
+<div>
+  <div>
+    <h3>ジャンル一覧・追加</h3>
+    <div>
+      <label>ジャンル名</label>
+      <%= form_with model: @genre, local:true do |f|%>
+        <%= f.text_field :genre_name %>
+        <%= f.submit "新規登録" %>
+      <% end %>
+    </div>
+    <div>
+    <table>
+      <tr>
+        <th>ジャンル</th>
+        <th></th>
+      </tr>
+      <%= @genres.each do |genre|%>
+      <tr>
+        <td>
+          <%= genre.genre_name %>
+        </td>
+        <td>
+          <%= link_to edit_admin_genres_path(genre.id) %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    </div>
+    <%= paginate @genre_page %>
+  </div>
+</div>
+
+
