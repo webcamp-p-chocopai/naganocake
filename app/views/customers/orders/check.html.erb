@@ -1,0 +1,58 @@
+<%# ブートストラップは後から記述します　%>
+<%# 注文情報確認画面　%>
+<div>
+  <h3><b>注文情報確認</h3>
+  <div>
+    <table>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込み)</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+      <% @item_image.each do |cart_items| %>
+      <tr>
+        <td>
+          <%= attachment_image_tag cart_items.item, :item_image, :fill, 50, 40, fallback: "no_image.jpg", size: "50x40" %>
+          <%= cart_items.item.item_name %>
+        </td>
+        <td>
+          @<%= (cart_items.item.non_taxed_price * 110).ceil.to_s(:delimited) %>-
+        </td>
+        <td>
+          <%= cart_items.qty %>
+        </td>
+        <td>
+          ¥<%= ((cart_items.item.non_taxed_price * 110).ceil * cart_items.qty).to_s(:delimited) %>-
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>]
+  <div>
+    <table>
+      <tr>
+        <th>送料</th>
+        <td>
+          
+        </td>
+      </tr>
+      <tr>
+        <th>商品合計</th>
+        <td>
+          
+        </td>
+      </tr>
+      <tr>
+        <th>請求金額</th>
+        <td>
+          
+        </td>
+      </tr>
+    </table>
+    <strong>支払方法</strong><br>
+    <%= @.method_of_payment %>
+    <strong>お届け先</strong><br>
+    
+  </div>
+</div>
