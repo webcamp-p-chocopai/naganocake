@@ -12,7 +12,7 @@ class Admin::OrderItemsController < ApplicationController
       when "製作完了"
         order_item.order.update(orderd_status: "発送準備中")
     end
-    redirect_to admin_order_path(order_item.order.id)
+    redirect_back(fallback_location: admin_root_path)
   end
 
   private
