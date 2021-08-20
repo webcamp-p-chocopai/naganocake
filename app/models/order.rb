@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :customer
 
   enum method_of_payment: {
-  "クレジット" => 0,
+  "クレジットカード" => 0,
   "銀行振込" => 1,
   }
   enum orderd_status: {
