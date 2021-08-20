@@ -7,6 +7,17 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = @order.order_items
+    @order_items = @order.order_items.all
+    #商品合計の変数かく
+  end
+
+  def update
+    order = Order.find(params[:id])
+    order_items = order.order_items
+    order.update(order_params)
+    if order.orderd_status == "入金確認"
+      order_items.all_update(production_status: "製作待ち")
+    end
+    redirect_to admin_order_path(orde)
   end
 end
