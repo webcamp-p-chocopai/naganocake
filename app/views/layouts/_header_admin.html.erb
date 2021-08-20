@@ -1,0 +1,20 @@
+<div class="admin-header">
+  <div class="admin-nav-bars">
+    <nav class="nav navbar-brand navbar-left header-logo" >
+      <%= link_to admin_root_path, class: "header-logo-letter" do %>
+        <%= image_tag('logo.png', class: 'admin_shop_logo') %>
+      <% end %>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- 管理者がログインしている時 -->
+        <li><%= link_to "商品一覧", admin_items_path %></li>
+        <li><%= link_to "会員一覧", admin_customers_path %></li>
+        <li><%= link_to "注文履歴一覧", admin_others_path %></li>
+        <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
+        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- 検索フォーム -->
+</div>
