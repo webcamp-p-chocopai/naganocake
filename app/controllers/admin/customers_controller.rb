@@ -14,7 +14,7 @@ class Admin::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to edit_admin_customer_path(@customer.id)
+    redirect_to admin_customer_path(@customer.id)
   end
 
 end

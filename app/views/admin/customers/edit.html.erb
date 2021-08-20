@@ -1,7 +1,7 @@
 <div class="mx-auto container">
   <div class="form-group form-inline row">
     <h2>さんの会員情報編集</h2>
-      <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+      <%= form_with model: @customer, id: 'current_customer', class: 'current_customer', local: true do |f| %>
     <div class='row'>
       <table class="table">
         <tr>
