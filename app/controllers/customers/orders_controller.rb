@@ -1,8 +1,7 @@
 class Customers::OrdersController < ApplicationController
 def index
   @orders = Order.all
-  @total_price = @products.sum(:product_price)
-
+  #@total_price = @products.sum(:product_price)
 end
 
 def show
@@ -10,3 +9,4 @@ def show
   @order_items = @oreder.order_items
 end
 end
+

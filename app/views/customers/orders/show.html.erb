@@ -5,7 +5,6 @@
         <table class='table'>
           <tr>
             <td>注文日</td>
-            <!--strftime分かってないから調べる-->
             <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
@@ -27,7 +26,6 @@
       <table class='table'>
         <tr>
           <td>商品合計</td>
-          <!-- 商品の合計金額を表示、注文確定後だから税率かけなくてもいい？-->
           <td><%= @order.taxed_billing_price.add_tax_price.to_s(:delimited) %> %></td>
         <tr>
           <tr>
@@ -37,7 +35,7 @@
         <tr>
           <td>ご請求金額</td>
           <!--送料を足す調べる-->
-          <td><%= @order.taxed_billing_price.add_tax_price.to_s(:delimited) %> %></td>
+          <td><%= @order.taxed_billing_price.add_tax_price.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>

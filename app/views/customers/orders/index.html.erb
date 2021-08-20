@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-10'>
-      <h4>注文履歴一覧</4>
+      <h5>注文履歴一覧</5>
       <table class='table'>
         <thead>
           <tr>
@@ -13,17 +13,21 @@
             <td>注文詳細</td>
           </tr>
         <tbody>
-          <% @sum = 0 %>
           <% @orders.each do |order| %>
             <tr>
               <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-              <td><%= order.dear_address %></td>
-              <td><%= order.order_items.item_name %></td>
-              
+              <td>
+                <%= order.postal_code %>
+                <%= order.dear_address %>
+                <%= order.dear_name %>
+              </td>
+              <td>
+                <% order.each do |order| %>
+                <%= order.order_items.item_name %>
+                <% end %>
+              </td>
                <!-- 商品の合計金額と送料を足した額を表示-->
               <td><%= order.taxed_billing_price %> 円 %></td>
-              <%= @sum += order.taxed_billing_price.to_s(:delimited) %>
-
               <td><%= order.orderd_status %></td>
               <td><%= link_to 表示する, class: "btn btn-sm btn-success customers_order_path_#{order.id}"%></td>
             </tr>
