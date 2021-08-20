@@ -15,6 +15,7 @@ class Admin::OrdersController < ApplicationController
     order = Order.find(params[:id])
     order_items = order.order_items
     order.update(order_params)
+    # 注文ステータスが"入金確認"になったら製作ステータス全てを"製作待ち"に自動更新?
     if order.orderd_status == "入金確認"
       order_items.all_update(production_status: "製作待ち")
     end
