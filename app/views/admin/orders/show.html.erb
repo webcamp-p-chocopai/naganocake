@@ -29,8 +29,10 @@
       <tr>
         <th>注文ステータス</th>
         <th>
-          <%= form_with model: @order, url: admin_order, method: :patch, local: :true do |f| %>
-            <%= f.select :orderd_status, ["入金待ち"] #ここに何メソッドを書くか %>
+          <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+            <!-- ステータスのpull downボタン -->
+            <%= f.select ::orderd_status, Order.orderd_statuses.keys.to_a %>
+            <%= f.select ::orderd_status, Order.orderd_statuses.values.to_a %>
             <%= f.submit "更新", class: "btn btn-primary" %>
           <% end %>
         </th>
