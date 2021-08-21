@@ -34,7 +34,11 @@
         <tr>
           <td>会員ステータス</td>
           <td>
+<<<<<<< HEAD
             <% if @customer.is_deleted == true%>
+=======
+            <% if @customer.is_deleted == true %>
+>>>>>>> c5be88f6cf931a92daf2d06ab74d63ac40962018
               <p class="text-secondary">退会済</p>
             <% else %>
               <p class="text-success">有効</p>
@@ -43,8 +47,13 @@
         </tr>
         <tr>
           <td></td>
+<<<<<<< HEAD
           <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></td>
           <td><%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary" %></td>
+=======
+          <td><%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %></td>
+          <td><%= link_to "注文履歴一覧を見る", admin_customers_path, class: "btn btn-primary" %></td>
+>>>>>>> c5be88f6cf931a92daf2d06ab74d63ac40962018
         </tr>
       </table>
     </div>

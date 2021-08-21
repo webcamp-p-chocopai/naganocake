@@ -1,12 +1,13 @@
 class Customers::OrdersController < ApplicationController
 def index
   @orders = Order.all
-  #@total_price = @products.sum(:product_price)
+  @freight = 800
 end
 
 def show
   @order = Order.find(params[:id])
   @order_items = @oreder.order_items
+  @freight = 800
 end
 end
 

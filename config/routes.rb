@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :customers
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords',
+    registrations: 'customers/registrations'
+  }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
- 
+
   scope module: :customers do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
@@ -25,7 +35,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :customers, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :create, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update] do
      resources :order_items, only: [:update]
     end

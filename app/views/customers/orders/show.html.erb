@@ -35,7 +35,7 @@
         <tr>
           <td>ご請求金額</td>
           <!--送料を足す調べる-->
-          <td><%= @order.taxed_billing_price.add_tax_price.to_s(:delimited) %></td>
+          <td><%= @order.taxed_billing_price.add_tax_price +@freight.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
