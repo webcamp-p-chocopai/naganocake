@@ -30,9 +30,9 @@
         <th>注文ステータス</th>
         <th>
           <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-            <!-- ステータスのpull downボタン -->
-            <%= f.select ::orderd_status, Order.orderd_statuses.keys.to_a %>
-            <%= f.select ::orderd_status, Order.orderd_statuses.values.to_a %>
+            <!-- 注文ステータスのpull downボタン -->
+            <%= f.select :orderd_status, Order.orderd_statuses.keys.to_a %>
+            <%= f.select :orderd_status, Order.orderd_statuses.values.to_a %>
             <%= f.submit "更新", class: "btn btn-primary" %>
           <% end %>
         </th>
@@ -62,7 +62,9 @@
             <td><%= order_item.item.item_price * order_item.purchase_quantity %></td>
             <td>
               <%= form_with model: order_item, url: admin_order_order_item, method: :patch, local: true do |f| %>
-                <% f.select :production_status, OrderItem.production_status. #ここに何メソッドを書くか %>
+                <!-- 製作ステータスのpull downボタン -->
+                <%= f.select :production_status, OrderItem.production_statuses.keys.to_a %>
+                <%= f.select :production_status, OrderItem.production_statuses.values.to_a %>
                 <%= f.submit "更新", class: "btn btn-primary" %>
               <% end %>
             </td>
