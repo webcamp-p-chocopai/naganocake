@@ -6,9 +6,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="nav navbar-nav ml-auto">
+        <ul class="nav navbar-nav nav-rig">
         <!-- 顧客がログインしている時 -->
         <% if customer_signed_in? %>
+          <li>ようこそ、<%= current_customer.first_name %>さん ！</li>
           <li>
             <%= link_to root_path do %>
               <i class="fas fa-user-cog"> マイページ </i>
