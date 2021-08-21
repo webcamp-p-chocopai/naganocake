@@ -25,16 +25,23 @@
   padding: 8px 12px;
 }
 
+.nav-customer-name {
+  list-style: none;
+  color: #440000;
+  display: flexbox;
+}
+
 .nav-item {
   padding-left: 0;
 }
 
 .nav-item i {
   padding: 8px 12px;
+  color: #440000;
 }
 
 .nav-item i:hover {
-  background-color: #cd5c5c;
+  background-color: #996666;
   border-radius: 4px;
 }
 .shop_logo{
