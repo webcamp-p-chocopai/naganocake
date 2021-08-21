@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  protected
   def after_sign_in_path_for(resource)
     case resource
     when Customer
       customers_path(current_customer.id)
     when Admin
-      admin_orders
+      admin_orders_path
     end
   end
   
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::Base
     when Customer
       root_path
     when Admin
-      new_admin_session
+      new_admin_session_pay
     end
   end
 
