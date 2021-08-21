@@ -15,11 +15,7 @@
       <%= f.text_area :item_explanation %>
       
       <h4>ジャンル</h4>
-<<<<<<< HEAD
       <%= f.collection_select(:genre_id, @genres, :id, :genre_name,:prompt => "選択してください") %>
-=======
-      <%= f.collection_select(:genres_id, @genres, :id, :genre_name,:prompt => "選択してください") %>
->>>>>>> f73526390bb76e77029298ee6c32260df038a21a
       
       <h4>税抜価格</h4>
       <%= f.text_field :non_taxed_price %>
