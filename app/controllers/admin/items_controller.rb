@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
   
   def show
+    @item = Item.find(params[:id])
   end
 
   def index
@@ -13,17 +14,24 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    blog = Blog.new(blog_params)
-    blog.save
-    redirect_to blogs_path
+    item = Item.new(item_params)
+    item.save
+    redirect_to admin_items_path
   end
   
   def edit
+    @item = Item.find(params[:id])
+  end
+  
+  def update
+    item = Item.new(item_params)
+    item.save
+    redirect_to admin_items_path
   end
   
   private
-  def blog_params
-    params.require(:blog).permit(:title, :category, :body)
+  def item_params
+    params.require(:item).permit(:item_image, :item_name, :item_explanation, :non_taxed_price, :sale_status, :genres_id)
   end
 
 end

@@ -1,0 +1,65 @@
+<div class="container">
+	<div class="row">
+		<%= image_tag 'shopping_cart.png', :size =>'520x170' %>
+		<div class="text-right">
+			<%= link_to  "カートを空にする",customers_customer_alldestroy_path(@customer.id) ,method: :delete, class: "btn btn-danger" %>
+		</div><br>
+		<div class="blank-messege">
+		<%= flash[:blank] %>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @unit_price = 0 %>
+				<% @add_price = 0 %>
+				<% @subtotal = 0 %>
+					<% @carts.each do |cart| %>
+						<%= form_for [@customer, cart],url: customers_customer_cart_path(@customer, cart),method: :patch do |f| %>
+
+						<tr>
+							<!-- 商品名 -->
+							<td><%= cart_items.name %></td>
+							<!-- 単価(税込) -->
+							<% @unit_price = (cart_items.unit_price * 1.1).floor%>
+							<td><%= @unit_price.to_s(:delimited)%>円</td>
+							<!-- 数量 -->
+							<td><%= f.number_field :number,in: 1..100, step: 1, :value => item_qty %>
+							<%= f.submit "変更", class: "btn btn-primary",data: {:turbolinks => "false"} %></td>
+							<!-- 小計 -->
+							<% @subtotal = (@unit_price * ).floor %>
+							<td><%= @subtotal.to_s(:delimited) %>円</td>
+							<% @add_price = @add_price + @subtotal %>
+							<!-- 削除ボタン -->
+							<td><%= link_to "削除する", customers_customer_cart_path(@customer,cart), method: :delete, class: "btn btn-danger" %></td>
+						</tr>
+					<% end %>
+				<% end %>
+				<tr>
+					<td><%= link_to "買い物を続ける",customers_root_path, class: "btn btn-primary" %></td>
+					<!-- 合計金額 -->
+					<td></td>
+					<td></td>
+					<td>合計金額</td>
+					<td><%= @add_price.to_s(:delimited) %>円</td>
+				</tr>
+				<tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+	<div class="row">
+			<div class="text-center">
+			<%= link_to "情報入力へ進む", new_customers_customer_order_detail_path(current_customer.id),class: "btn btn-success btn-lg active" %>
+		</div><br>
+	</div>
+</div>
