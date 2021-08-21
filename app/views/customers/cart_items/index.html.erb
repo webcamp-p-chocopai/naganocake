@@ -36,7 +36,11 @@
 							<td><%= f.number_field :number,in: 1..100, step: 1, :value => item_qty %>
 							<%= f.submit "変更", class: "btn btn-primary",data: {:turbolinks => "false"} %></td>
 							<!-- 小計 -->
+<<<<<<< HEAD
 							<% @subtotal = (@unit_price * item_qty).floor %>
+=======
+							<% @subtotal = (@unit_price * ).floor %>
+>>>>>>> f73526390bb76e77029298ee6c32260df038a21a
 							<td><%= @subtotal.to_s(:delimited) %>円</td>
 							<% @add_price = @add_price + @subtotal %>
 							<!-- 削除ボタン -->
