@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-6"> 
+   <%= attachment_image_tag @item, :item_image , format: 'jpg', fallback: "no_image.jpg", size: "300x200" %>
+  </div>
+  <div class="col-md-6"> 
+    <p>商品名：<%= @item.item_name %></p>
+    <p>商品説明：<%= @item.item_explanation %></p>
+    <p>ジャンル：<%= @item.genre.genre_name %></p>
+    <p>税抜価格：<%= @item.non_taxed_price %></p>
+    <p>販売ステータス<% if @item.sale_status? %>
+            販売中
+          <% else %>
+            販売停止中
+          <% end %>
+    </p>
+    <p><%= link_to "編集する" ,edit_admin_item_path(@item) %></p>
+  </div>
+</div>
