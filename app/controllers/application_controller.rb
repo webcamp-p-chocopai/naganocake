@@ -6,16 +6,7 @@ class ApplicationController < ActionController::Base
     when Customer
       customers_path(resource)
     when Admin
-      admin_orders
-    end
-  end
-  
-  def after_sign_out_path_for(resource)
-    case resource
-    when Customer
-      root_path
-    when Admin
-      root_path
+      admin_orders_path
     end
   end
 
