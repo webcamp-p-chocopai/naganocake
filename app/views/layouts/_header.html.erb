@@ -10,71 +10,71 @@
         <!-- 顧客がログインしている時 -->
         <% if customer_signed_in? %>
           <li>ようこそ、<%= current_customer.first_name %>さん ！</li>
-          <li>
+          <li class="nav-item">
             <%= link_to root_path do %>
               <i class="fas fa-user-cog"> マイページ </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to items_path do %>
               <i class="fas fa-birthday-cake"> 商品一覧 </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to cart_items_path do %>
               <i class="fas fa-cart-arrow-down"> カート </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to destroy_customer_session_path, method: :delete do %>
               <i class="fas fa-sign-out-alt"> ログアウト </i>
             <% end %>
           </li>
         <!-- 管理者がログインしている時 -->
         <% elsif admin_signed_in? %>
-          <li>
+          <li class="nav-item">
             <%= link_to admin_items_path do %>
               <i class="fas fa-birthday-cake"> 商品一覧 </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to admin_customers_path do %>
               <i class="fas fa-users"> 会員一覧 </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to admin_others_path do %>
               <i class="fas fa-newspaper"> 注文履歴一覧 </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to admin_genres_path do %>
               <i class="fab fa-goodreads"> ジャンル一覧 </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to destroy_admin_session_path, method: :delete do %>
               <i class="fas fa-sign-out-alt"> ログアウト </i>
             <% end %>
           </li>
         <!-- ログインしていない時 -->
         <% else %>
-          <li>
+          <li class="nav-item">
             <%= link_to home_about_path do %>
               <i class="fab fa-apple"> アバウト </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to items_path do %>
               <i class="fas fa-birthday-cake"> 商品一覧 </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to new_customer_registration_path do %>
               <i class="fas fa-pencil-alt"> 新規登録 </i>
             <% end %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to new_customer_session_path do %>
               <i class="fas fa-sign-in-alt"> ログイン </i>
             <% end %>
