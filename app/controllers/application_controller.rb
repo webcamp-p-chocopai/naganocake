@@ -4,18 +4,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Customer
-      customers_path(current_customer.id)
+      customers_path(resource)
     when Admin
       admin_orders_path
-    end
-  end
-  
-  def after_sign_out_path_for(resource)
-    case resource
-    when Customer
-      root_path
-    when Admin
-      new_admin_session
     end
   end
 
