@@ -9,5 +9,10 @@ class Item < ApplicationRecord
   validates :item_name, presence: true
   validates :item_explanation, presence: true
   validates :non_taxed_price, presence: true
-  # validates :genre_id, presence: true
+  validates :genre_id, presence: true
+
+  def short_description
+    description[0, 9] + '...'
+  end
+
 end

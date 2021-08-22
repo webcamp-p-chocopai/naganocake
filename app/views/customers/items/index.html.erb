@@ -1,37 +1,23 @@
-<<<<<<< HEAD
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-xs-3">
 　　  <!-- ジャンル検索サイドバー　-->
       <%= render 'customers/items/genre_sidebar', genres: @genres %>
     </div>
-  <div class="col-xs-9 offset-1">
-    <h3 class="title"><strong>商品一覧</strong>（全<%= @all_items.count %>件）</h3>
-=======
-<div class="row">
-  <div class="col-xs-3">
-　　<!-- ジャンル検索　-->
-    <%= render 'customers/items/genre_sidebar', genres: @genres %>
-  </div>
-  <div class="col-xs-9">
-    <h2>商品一覧（全<%= @items.count %>件）</h2>
->>>>>>> 155ceb5719a91585ffcfd1b86e44ca5efc88c9f7
+    <div class="col-xs-9 offset-1">
+    <h3 class="title"><strong>商品一覧</strong>（全<%= @items.count %>件）</h3>
     <% @items.each do |item| %>
       <div class="item-box">
-        <table class="table">
+        <table class="table table-borderless">
           <tr>
             <th>
               <%= link_to item_path(item) do %>
-<<<<<<< HEAD
-                <%= attachment_image_tag item, :item_image, :fill, 100, 100, fallback: "no_image.jpg" %>
-=======
-              <%= attachment_image_tag item, :item_image, :fill, 100, 100, fallback: "no_image.jpg" %>
->>>>>>> 155ceb5719a91585ffcfd1b86e44ca5efc88c9f7
+                <%= attachment_image_tag item, :item_image, :fill, 200, 150, fallback: "no_image.jpg" %>
               <% end %>
             </th>
           </tr>
           <tr>
-            <th><%= link_to item.item_name, item_path(item) %></th>
+            <th><%= link_to item.item_name.truncate(10), item_path(item) %></th>
           </tr>
           <tr>
             <th>¥<%= ((item.non_taxed_price * 1.1).round).to_s(:delimited) %></th>
@@ -41,5 +27,5 @@
     <% end %>
     <div style="text-align: center;"><%= paginate @items %></div>
   </div>
-</div>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 class Customers::ItemsController < ApplicationController
   def index
       @genres = Genre.all
-      @items = Item.page(params[:page]).per(5)
+      @items = Item.page(params[:page]).per(8).reverse_order
   end
 
   def show
