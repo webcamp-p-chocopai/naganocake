@@ -34,7 +34,7 @@
               <!-- 注文ステータスのpull downボタン -->
               <%= f.select :orderd_status, Order.orderd_statuses.keys.to_a %>
               <%= f.select :orderd_status, Order.orderd_statuses.values.to_a %>
-              <%= f.submit "更新", class: "btn btn-primary" %>
+              <%= f.submit "更新", class: "btn btn-success" %>
             <% end %>
           </td>
         </tr>
@@ -66,7 +66,7 @@
                   <!-- 製作ステータスのpull downボタン -->
                   <%= f.select :production_status, OrderItem.production_statuses.keys.to_a %>
                   <%= f.select :production_status, OrderItem.production_statuses.values.to_a %>
-                  <%= f.submit "更新", class: "btn btn-primary" %>
+                  <%= f.submit "更新", class: "btn btn-success" %>
                 <% end %>
               </td>
             </tr>
