@@ -11,8 +11,7 @@ class Customers::ItemsController < ApplicationController
     @cart_item = CartItem.new
     @genres = Genre.all
   end
-    
-  def index
-  end
+  
+  
   
 end
