@@ -1,32 +1,36 @@
 class Customers::CartItemsController < ApplicationController
-    before_action :setup_cart_item!, only: [:edit, :destroy]
+    before_action :setup_cart_item!, only: [:edit, :destroy, :update]
     def index
         @cart_items = current_customer.cart_items
+        @customer = current_customer
     end
       
     def create
-        #if @cart_item.blank?
-           #@cart_item = current_cart.cart_items.build(product_id: params[:product_id])
-        #end
-        
-           #@cart_item.quantity += params[:quantity].to_i
         @cart_item = CartItem.new(cart_item_params)
         @cart_item.customer_id = current_customer.id
         p "====================="
         p @cart_item
         p "====================="
         @cart_item.save
-        redirect_to ''
+        redirect_to cart_items_path
     end
     
-    def edit
-        @cart_item.update(quantity: params[:quantity].to_i)
-        redirect_to ''
-    end
     
     def destroy
-        @cart_item.destroy
-        redirect_to ''
+        cart_item = CartItem.find(params[:id]) 
+        cart_item.destroy
+        redirect_to cart_items_path
+    end
+    
+    def all_destroy
+        current_customer.cart_items.destroy_all
+        redirect_to cart_items_path
+    end
+    
+    def update
+        @cart_item = CartItem.find(params[:id])
+        @cart_item.update(cart_item_params)
+        redirect_to cart_items_path
     end
       
     private
