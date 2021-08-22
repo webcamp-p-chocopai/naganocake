@@ -8,7 +8,7 @@
     <% genres.each do |genre| %>
     <tr class="table-body">
       <td>
-        <%= link_to genre.genre_name, items.path(genre_id: genre.id), class:"genre_search_name" %>
+        <%= link_to genre.genre_name, items_path(genre_id: genre.id), class:"genre_search_name" %>
       </td>
     </tr>
     <% end %>
