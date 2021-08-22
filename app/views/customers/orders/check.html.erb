@@ -10,20 +10,20 @@
         <th>数量</th>
         <th>小計</th>
       </tr>
-      <% @item_image.each do |cart_items| %>
+      <% @cart_items.each do |cart_items| %>
       <tr>
         <td>
           <%= attachment_image_tag cart_items.item, :item_image, :fill, 50, 40, fallback: "no_image.jpg", size: "50x40" %>
           <%= cart_items.item.item_name %>
         </td>
         <td>
-          @<%= (cart_items.item.non_taxed_price * 110).round.to_s(:delimited) %>-
+          @<%= (cart_items.item.non_taxed_price.add_tax_price).round.to_s(:delimited) %>-
         </td>
         <td>
           <%= cart_items.qty %>
         </td>
         <td>
-          ¥<%= ((cart_items.item.non_taxed_price * 110).round * cart_items.qty).to_s(:delimited) %>-
+          ¥<%= ((cart_items.item.non_taxed_price.add_tax_price).round * cart_items.qty).to_s(:delimited) %>-
         </td>
       </tr>
       <% end %>
@@ -33,24 +33,43 @@
     <table>
       <tr>
         <th>送料</th>
-        <td></td>
+        <td>¥<%= @freight %>-</td>
       </tr>
       <tr>
         <th>商品合計</th>
-        <td>
-          <%= %>
-        </td>
+        <td>¥<%= @total_price %>-</td>
       </tr>
       <tr>
         <th>請求金額</th>
-        <td>
-          <%=%>
-        </td>
+        <td>¥<%= @total_price + @freight %>-</td>
       </tr>
     </table>
-    <strong>支払方法</strong><br>
-      <%=%>
-    <strong>お届け先</strong><br>
-      <%=%>
+    <div>
+      <div>
+        <strong>支払方法</strong>
+        <%= @order.method_of_payment %>
+      </div>
+      <div>
+        <strong>お届け先</strong>
+        <%= @order.postal_code %>
+        <%= @order.address %><br>
+        <%= @order.dear_name %>
+      </div>
+    </div>
+    <div>
+      <% form_with model: @order, url: orders_path, local: true do |f| %>
+      <%#= f.hidden_field :customer_id, value: @current_customer.id %>
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :dear_name %>
+      <%= f.hidden_field :method_of_payment %>
+      <%= f.hidden_field :freight, value: @freight %>
+      <%= f.hidden_field :taxed_billing_price, value: %>
+      <%= f.hidden_field :orderd_status, value: "入金待ち" %>
+      <%= f.submit "注文を確定する" %>
+      <% end %>
+    </div>
   </div>
 </div>
+
+
