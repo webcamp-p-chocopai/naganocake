@@ -20,7 +20,7 @@
             <th><%= link_to item.item_name, item_path(item) %></th>
           </tr>
           <tr>
-            <th>¥<%= (item.non_taxed_price * 1.1).to_i %></th>
+            <th>¥<%= ((item.non_taxed_price * 1.1).round).to_s(:delimited) %></th>
           </tr>
         </table>
       </div>
