@@ -4,7 +4,7 @@
     <table class="table table-borderless">
       <tbody>
         <tr>
-          <th>購入者</th>
+          <th><strong>購入者</strong></th>
           <td>
             <%= link_to admin_customer_path(@order.customer) do %>
               <%= @order.customer.last_name %>
@@ -13,22 +13,22 @@
           </td>
         </tr>
         <tr>
-          <th>注文日</th>
+          <th><strong>注文日</strong></th>
           <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
         </tr>
         <tr>
-          <th>配送先</th>
+          <th><strong>配送先</strong></th>
           <td>
             <p><%= @order.postal_code %><%= @order.address %></p>
             <p><%= @order.dear_name %></p>
           </td>
         </tr>
         <tr>
-          <th>支払方法</th>
+          <th><strong>支払方法</strong></th>
           <td><%= @order.method_of_payment %></td>
         </tr>
         <tr>
-          <th>注文ステータス</th>
+          <th><strong>注文ステータス</strong></th>
           <td>
             <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
               <!-- 注文ステータスのpull downボタン -->
@@ -47,11 +47,11 @@
       <table class="table table-bordered">
         <thead>
           <tr class="table-head" style="background-color:#gray" >
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>製作ステータス</th>
+            <th><strong>商品名</strong></th>
+            <th><strong>単価（税込）</strong></th>
+            <th><strong>数量</strong></th>
+            <th><strong>小計</strong></th>
+            <th><strong>製作ステータス</strong></th>
           </tr>
         </thead>
         <tbody>
@@ -78,16 +78,16 @@
       <table class="table">
         <tbody>
           <tr>
-            <th>商品合計</th>
+            <th><strong>商品合計</strong></th>
             <td><%= #taxed_purchase_price %></td>
           </tr>
           <tr>
-            <th>送料</th>
+            <th><strong>送料</strong></th>
             <td><%= @order.freight %></td>
           </tr>
           <tr>
-            <th>請求金額合計</th>
-            <td><%#= taxed_purchase_price %></td>
+            <th><strong>請求金額合計</strong></th>
+            <td><strong><%#= taxed_purchase_price %></strong></td>
           </tr>
         </tbody>
       </table>
