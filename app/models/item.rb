@@ -11,8 +11,4 @@ class Item < ApplicationRecord
   validates :non_taxed_price, presence: true
   validates :genre_id, presence: true
 
-  def short_description
-    description[0, 9] + '...'
-  end
-
 end
