@@ -1,14 +1,12 @@
 class Customers::ItemsController < ApplicationController
-
   def index
-    @all_items = Item.all
-    @items = @all_items.page(params[:page]).reverse_order
-    @genres = Genre.all
+      @genres = Genre.all
+      @items = Item.page(params[:page]).per(5)
   end
 
   def show
-    @item = Item.find(params[:id])
-    @cart_item = CartItem.new
-    @genres = Genre.all
+      @item = Item.find(params[:id])
+      @genres = Genre.all
+      @cart_item = CartItem.new
   end
 end
