@@ -18,7 +18,7 @@
         <div class="item-price"><strong>¥<%= ((@item.non_taxed_price * 1.1).round).to_s(:delimited) %></strong><span>(税込)</span></div>
           <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
             <%= f.number_field :item_qty, placeholder: '個数選択', class: "quantity-select-form", min: 1 %>
-            <%= f.hidden_field :id, :value => @item.id %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
             <%= f.submit "カートに入れる", class: "btn btn-outline-success" %>
           <% end %>
       </div>
