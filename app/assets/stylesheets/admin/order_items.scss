@@ -1,3 +1,17 @@
 // Place all the styles related to the admin/OrderItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container-fluid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  margin-top: 30px;
+}
+h4.title-orders {
+  padding: 0.5em;
+  color: #494949;
+  background: #d3d3d3;
+  border-left: solid 5px #708090;
+  text-align: center;
+}
