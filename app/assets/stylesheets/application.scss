@@ -20,10 +20,13 @@
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex end;
   align-items: center;
   background-color: #bc8f8f;
   padding: 8px 12px;
+}
+.flex>:first-child {
+  margin-right: auto;
 }
 
 .nav-customer-name {

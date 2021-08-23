@@ -5,10 +5,11 @@
 .container-fluid {
   display: flex;
   flex-direction: row;
-  flex-wrap: no-wrap;
+  flex-wrap: column;
   margin-top: 30px;
 }
-h4.title-orders {
+
+h4.title-order {
   padding: 0.5em;
   color: #494949;
   background: #d3d3d3;
