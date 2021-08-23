@@ -11,44 +11,32 @@
       <table>
         <tr>
           <th>氏名</th>
-          <tr>
-            <%= @customer.last_name %>  <%= @customer.first_name %>
-          </tr>
+          <td><%= @customer.first_name %>  <%= @customer.last_name %></td>
         </tr>
         <tr>
           <th>カナ</th>
-          <tr>
-            <%= @customer.kana_last_name %>  <%= @customer.kana_first_name %>
-          </tr>
+          <td><%= @customer.kana_first_name %>  <%= @customer.kana_last_name %></td>
         </tr>
         <tr>
           <th>郵便番号</th>
-          <tr>
-            <%= @customer.cust_postal_code %>
-          </tr>
+          <td><%= @customer.cust_postal_code %></td>
         </tr>
         <tr>
           <th>住所</th>
-          <tr>
-            <%= @customer.cust_address %>
-          </tr>
+          <td><%= @customer.cust_address %></td>
         </tr>
         <tr>
           <th>電話番号</th>
-          <tr>
-            <%= @customer.phone_number %>
-          </tr>
+          <td><%= @customer.phone_number %></td>
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <tr>
-            <%= @customer.email %>
-          </tr>
+          <td><%= @customer.email %></td>
         </tr>
       </table>
       <div>
         <h4><strong>配送先</strong></h4>
-        <%= link_to "一覧を見る", adresses_path %>
+        <%= link_to "一覧を見る", addresses_path %>
         <h4><strong>注文履歴</strong></h4>
         <%= link_to "一覧を見る", orders_path %>
       </div>
