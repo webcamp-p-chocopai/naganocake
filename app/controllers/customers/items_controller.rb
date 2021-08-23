@@ -1,7 +1,8 @@
 class Customers::ItemsController < ApplicationController
   def index
       @genres = Genre.all
-      @items = Item.page(params[:page]).per(8).reverse_order
+      @all_items = Item.where(sale_status: true)
+      @items = @all_items.page(params[:page]).per(8).reverse_order
   end
 
   def show

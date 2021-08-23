@@ -2,18 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//商品一覧画面//
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.container page {
+  floot: left;
+}
+
 .column {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.title {
+.title-items {
   margin: 30px 0;
+}
+.strong {
+  background-color: #d8bfd8;
 }
 .item-box {
   float: left;
 }
+
+.pagination {
+  justify-content: center;
+}
+
+
+// 商品詳細画面 //
 
 .item-image {
   float: left;
@@ -23,6 +44,7 @@
   float: left;
 }
 
+// ジャンル検索 //
 table.genre-search-table {
   table-layout: auto;
 	width: 100%;
