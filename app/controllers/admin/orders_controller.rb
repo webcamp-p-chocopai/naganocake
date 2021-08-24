@@ -1,23 +1,14 @@
 class Admin::OrdersController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     @all_orders = Order.all
     @orders = @all_orders.page(params[:page]).per(10)
-    # @order = Order.find(params[:id])
-    # order_items = @order.items
-    
-    # @sum = 0
-    # @order.order_items.each do |order_item|
-    #   @purchase_quantity = order_item.purchase_quantity
-    #   @sum += @purchase_quantity
-    # end
   end
 
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items.all
-    # @order_items.taxed_parchase_price = (order_items.item.non_taxed_price * 1.1).floor.to_s(:delimited)
     # 送料
     @freight = 800
     # 商品合計
