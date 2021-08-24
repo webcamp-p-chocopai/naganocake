@@ -9,18 +9,8 @@ class ApplicationController < ActionController::Base
       admin_orders_path
     end
   end
-<<<<<<< HEAD
+
   
-  # def after_sign_out_path_for(resource)
-  #   case resource
-  #   when Customer
-  #     root_path
-  #   when Admin
-  #     new_admin_session
-  #   end
-  #end
-=======
->>>>>>> 155ceb5719a91585ffcfd1b86e44ca5efc88c9f7
 
   protected
   
