@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-xs-3">
     <!-- ジャンル検索　-->
-    <%= render 'customers/items/genre_sidebar', genres: @genres %>
+    <%= render 'customers/items/genre_sidebar', genres: Genre.all %>
   </div>
   <div class="col-xs-4">
     <div class="item-image">
-      <%= attachment_image_tag @item, :item_image, 100, 100, fallback: "no_image_jpg" %>
+      <%= attachment_image_tag @item, :item_image, 100, 100, fallback: "no_image.jpg" %>
     </div>
   </div>
   <div class="col-xs-5">
@@ -13,11 +13,10 @@
       <h2><%= @item.item_name %></h2>
       <p><%= @item.item_explanation %></p>
       <h3 class="item-price">¥<%= ((@item.non_taxed_price * 1.1).round).to_s(:delimited) %>(税込)</h3>
-      <%= form_with model: @cart_item, cart_items_path, method: :post, do |f| %>
-        <%= f.label :item_qty, "個数選択" %>
-        <%= f.number_field :item_qty, placeholder: '個数選択', class: "quantity-select-form" %>
-        <%= f.hidden_field :id, :value => @item.id %>
-        <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+        <%= f.number_field :item_qty, placeholder: '個数選択', class: "quantity-select-form", min: 1 %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit "カートに入れる", class: "btn btn-outline-success" %>
       <% end %>
     </div>
   </div>

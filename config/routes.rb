@@ -5,11 +5,6 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
 
-  devise_for :customers, controllers: {
-    sessions: 'customers/sessions',
-    passwords: 'customers/passwords',
-    registrations: 'customers/registrations'
-  }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -23,12 +18,13 @@ Rails.application.routes.draw do
 
     resources :items, only: [:show, :index]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
-    resources :cart_items, only: [:create, :index, :edit, :update, :destroy]
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
+    resources :cart_items, only: [:create, :index, :edit, :update, :destroy]
 
+    get '/orders/thanks' => "orders#thanks", as: 'orders_thanks'
     resources :orders, only: [:index, :show, :new, :create]
     post '/orders/check' => "orders#check", as: 'orders_check'
-    get '/orders/thanks' => "orders#thanks", as: 'orders_thanks'
+
   end
 
   namespace :admin do
@@ -40,4 +36,12 @@ Rails.application.routes.draw do
      resources :order_items, only: [:update]
     end
   end
+
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords',
+    registrations: 'customers/registrations'
+  }
+
+
 end
