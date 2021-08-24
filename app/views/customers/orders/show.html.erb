@@ -9,7 +9,11 @@
           </tr>
           <tr>
             <td>配送先</td>
-            <td><%= @order.dear_address %></td>
+            <td>
+              <%= @order.postal_code %><br>
+              <%= @order.dear_address %><br>
+              <%= @order.dear_name %>
+            </td>
           </tr>
           <tr>
             <td>支払方法</td>
@@ -35,14 +39,14 @@
         <tr>
           <td>ご請求金額</td>
           <!--送料を足す調べる-->
-          <td><%= @order.taxed_billing_price %></td>
+          <td><%= (@order.taxed_billing_price) + (@freight) %></td>
         </tr>
       </table>
     </div>
   </div>
   <div class='row'>
     <div class='col-md-8'>
-      
+      <h3>注文内容</h3>
       <table class='table table-bordered'>
         <thead>
           <tr>
@@ -56,9 +60,9 @@
           <% @order.order_items.each do |order_item| %>
             <tr>
               <td><%= order_item.item.item_name %></td>
-              <td><%= order_item.item.non_taxed_price %></td>
+              <td><%= (order_item.item.non_taxed_price * 1.1).floor %></td>
               <td><%= order_item.purchase_quantity %></td>
-              <td><%#= order_item.add_tax_price %>円</td>
+              <td><%= (order_item.item.non_taxed_price * 1.1).floor * (order_item.purchase_quantity) %></td>
             </tr>
           <% end %>
         </tbody>
