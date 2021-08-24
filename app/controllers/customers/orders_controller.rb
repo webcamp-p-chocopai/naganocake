@@ -1,17 +1,16 @@
 class Customers::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  def index
+    @orders = Order.all
+    @order = Order.page(params[:page]).per(10)
+    @freight = 800
+  end
 
 
-
-
-
-
-
-
-
-
-
-
+  def show
+    @order = Order.find(params[:id])
+    @freight = 800
+  end
 
 
   def new
@@ -106,3 +105,6 @@ class Customers::OrdersController < ApplicationController
 
 
 end
+
+
+
