@@ -22,14 +22,14 @@
                 <%= order.dear_name %>
               </td>
               <td>
-                <% order.each do |order| %>
-                <%= order.order_items.item_name %>
+                <% order.order_items.each do |order_item| %>
+                <p><%= order_item.item.item_name %></p>
                 <% end %>
               </td>
                <!-- 商品の合計金額と送料を足した額を表示?-->
-              <td><%= order.taxed_billing_price %> 円 %></td>
+              <td><%= order.taxed_billing_price %> 円</td>
               <td><%= order.orderd_status %></td>
-              <td><%= link_to 表示する, class: "btn btn-sm btn-success customers_order_path_#{order.id}"%></td>
+              <td><%= link_to '表示する',order_path(order.id), class: "btn btn-sm btn-success" %></td>
             </tr>
           <% end %>
         </tbody>

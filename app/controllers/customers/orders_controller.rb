@@ -7,7 +7,6 @@ class Customers::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = @oreder.order_items
     @freight = 800
   end
 
@@ -25,7 +24,7 @@ class Customers::OrdersController < ApplicationController
     #end
     # ↓注文(orders)テーブルに保存
     @order = current_customer.orders.new(order_params)
-    @order.save
+    @order.save!
     # ↓注文(cart_items)テーブルにデータを入れる(保存する)記述
     # ↓each文で商品カート(cart_items)をとりだす
     current_customer.cart_items.each do |cart_item|
