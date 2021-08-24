@@ -3,27 +3,22 @@
     <div class='col-md-3'>
       <%= render 'customers/homes/genres-search' %>
     </div>
-    <div class='col-md-8 '>
-      <div>
+    <div class='col-md-8 jd-flex justify-content-center'>
         ようこそ、ながのCAKEへ！<br>
         このサイトでは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。
-      </div>
-    </div>
   </div>
-  <div class='row'>
-    <div class='col-md-3'>
-      <div class=>新着商品</div>
+  <div class='row float-right'>
+    <div class='row float-center'>新着商品</div>
+      <% @item.each do |item| %>
       <div>
-        <% @item.each do |item| %>
         <table class='table table-borderless'>
-          <tr><%= attachment_image_tag(item, :item_image, :fill, 50, 50, fallback: "no_image_cake.jpg") %></tr>
+          <tr><%= attachment_image_tag(item, :item_image, :fill, 20, 20, fallback: "no_image_cake.jpg") %></tr>
           <tr><td><%= item.item_name %></td></tr>
 	        <tr><td>¥<%= item.non_taxed_price %></td></tr>
         </table>
-        <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

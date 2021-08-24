@@ -8,19 +8,19 @@
           <tr>
             <!-- 名前とフォームが離れている -->
             <td><%= f.label:名前, class: "float-left" %></td>
-            <td>(性)</td>
-            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control form-control-md w-100" %></td>
-            <td>(名)</td>
-            <td><%= f.text_field :last_name, autocomplete: "last_name", class: "col-auto form-control form-control-md w-100" %></td>
+            <!--<td>(性)</td>-->
+            <td>(性)<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control form-control-md w-100" %></td>
+            <!--<td>(名)</td>-->
+            <td>(名)<%= f.text_field :last_name, autocomplete: "last_name", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
           
           <tr>
             <!-- 名前とフォームが離れている -->
             <td><%= f.label :フリガナ, class: "float-left" %></td>
-            <td>(セイ)</td>
-            <td><%= f.text_field :kana_first_name, autocomplete: "kana_first_name", class: "form-control form-control-md w-100" %></td>
-            <td>(メイ)</td>
-            <td><%= f.text_field :kana_last_name, autocomplete: "kana_last_name", class: "form-control form-control-md w-100" %></td>
+            <!--<td>(セイ)</td>-->
+            <td>(セイ)<%= f.text_field :kana_first_name, autocomplete: "kana_first_name", class: "form-control form-control-md w-100" %></td>
+            <!--<td>(メイ)</td>-->
+            <td>(メイ)<%= f.text_field :kana_last_name, autocomplete: "kana_last_name", class: "form-control form-control-md w-100" %></td>
           </tr>
       
           <tr>
@@ -36,7 +36,7 @@
           <tr>
             <!-- フォームの幅を広げたい -->
             <td><%= f.label :住所, class: "float-left" %></td>
-            <td><%= f.text_field :address, autocomplete: "address", class: "col-auto form-control form-control-md w-200" %></td>
+            <td><%= f.text_field :address, autocomplete: "address", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
           
           <tr>
