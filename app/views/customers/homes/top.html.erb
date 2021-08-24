@@ -1,9 +1,12 @@
 <div class='container px-5 px-sm-0'>
   <div class='row mb-5'>
     <div class='col-md-3'>
-      <%= render 'customers/homes/genres-search' %>
+       <%= render 'customers/items/genre_sidebar', genres: @genres %>
     </div>
-    <div class='col-md-8 jd-flex justify-content-center'>
+    </div>
+    <!-- メインビジュアル -->
+    <div class='col-md-8 offset-md-5'>
+      <div>
         ようこそ、ながのCAKEへ！<br>
         このサイトでは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
