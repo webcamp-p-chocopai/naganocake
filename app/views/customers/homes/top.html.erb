@@ -14,7 +14,8 @@
       <% @item.each do |item| %>
       <div>
         <table class='table table-borderless'>
-          <tr><%= attachment_image_tag(item, :item_image, :fill, 20, 20, fallback: "no_image_cake.jpg") %></tr>
+          <tr><th><%= attachment_image_tag item, :item_image, format: 'jpg' , fallback: "no_image_cake.jpg", size: "100x80" %></th></tr>
+
           <tr><td><%= item.item_name %></td></tr>
 	        <tr><td>¥<%= item.non_taxed_price %></td></tr>
         </table>
