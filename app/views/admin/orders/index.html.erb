@@ -1,11 +1,11 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row mt-5 mb-5">
-    <div class="col-md-5 col-offset-3">
+    <div class="col-md-12">
       <h4 class="title-order">注文履歴一覧</h4>
     </div>
   </div>
   <div class="row">
-     <div class="col-md-10 col-md-offset-1">
+     <div class="col-md-12">
        <table class="table table-bordered" style="margin-top: 50px;" >
         <thead>
           <tr class="table-thead" style="background-color: #CCCCCC;" >
@@ -16,17 +16,24 @@
           </tr>
         </thead>
         <tbody>
-          <%# @orders.each do |order| %>
+          <% @orders.each do |order| %>
           <tr>
-            <td><%#= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(order) %></td>
-            <td><%#= order.customer.last_name + order.customer.first_name %></td>
-            <td><%#= order.order_items.purchase_quantity %></td>
-            <td><%#= order.orderd_status %></td>
+            <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(order) %></td>
+            <td><%= order.customer.last_name + order.customer.first_name %></td>
+            <td>
+              <% @sum = 0 %>
+                <% order.order_items.each do |order_item| %>
+                 <% @purchase_quantity = order_item.purchase_quantity %>
+                 <% @sum += @purchase_quantity %>
+                <% end %>
+              <%= @sum %>
+            </td>
+            <td><%= order.orderd_status %></td>
           </tr>
-          <%# end %>
-          <%#= paginate @orders %>
+          <% end %>
         </tbody>
       </table>
+      <%= paginate @orders %>
     </div>
   </div>
 </div>
