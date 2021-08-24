@@ -1,22 +1,15 @@
 class Customers::OrdersController < ApplicationController
-<<<<<<< HEAD
-def index
-  @orders = Order.all
-  @freight = 800
-=======
   before_action :authenticate_customer!
+  def index
+    @orders = Order.all
+  end
 
 
-
-
-
-
-
-
-
-
-
-
+  def show
+    @order = Order.find(params[:id])
+    @order_items = @oreder.order_items
+    @freight = 800
+  end
 
 
   def new
@@ -110,13 +103,7 @@ def index
   end
 
 
->>>>>>> 764a2736ec13f93bb813ca1271875a264e6c2852
 end
 
-def show
-  @order = Order.find(params[:id])
-  @order_items = @oreder.order_items
-  @freight = 800
-end
-end
+
 
