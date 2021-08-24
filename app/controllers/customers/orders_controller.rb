@@ -34,7 +34,7 @@ class Customers::OrdersController < ApplicationController
       @order_item = OrderItem.new
       @order_item.item_id = cart_item.item_id
       @order_item.purchase_quantity = cart_item.item_qty
-      @order_item.taxed_purchase_price = (cart_item.item.non_taxed_price.add_tax_price).round# ←だめなら*1.1にもどす
+      @order_item.texed_purchase_price = cart_item.item.non_taxed_price * 1.1.floor
       @order_item.order_id = @order.id
       @order_item.save
     end
