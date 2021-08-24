@@ -33,8 +33,9 @@ main{
   background-color: #fdede4;
 }
 
+
 .navbar {
-  display: flex;
+  // display: flex;
   justify-content: flex end;
   align-items: center;
   background-color: #bc8f8f;
@@ -47,7 +48,6 @@ main{
 .nav-customer-name {
   list-style: none;
   color: #440000;
-  display: flexbox;
 }
 
 .nav-item {
@@ -85,7 +85,5 @@ main{
 }
 
 footer {
-  // justify-content: center;
   background-color: #bc8f8f;
-  // align-items: center;
 }
