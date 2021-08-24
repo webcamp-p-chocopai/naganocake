@@ -1,17 +1,16 @@
-<!-- ブートストラップは後から記述します-->
 <!-- 会員詳細画面-->
-<div>
+<div class="mx-5">
   <div>
     <div>
-      <h3>マイページ</h3>
-      <div>
-        <h4><strong>登録情報</strong></h4>
-        <%= link_to "編集する", edit_customers_path %>
+      <h3 class="my-3">マイページ</h3>
+      <div class="row my-3 col-3">
+        <h4 class="mx-2"><strong>登録情報</strong></h4>
+        <%= link_to "編集する", edit_customers_path, method: :get, class: "btn btn-success mx-2" %>
       </div>
-      <table>
+      <table class="table col-5">
         <tr>
-          <th>氏名</th>
-          <td><%= @customer.first_name %>  <%= @customer.last_name %></td>
+          <th class="col-2">氏名</th>
+          <td class="col-5"><%= @customer.first_name %>  <%= @customer.last_name %></td>
         </tr>
         <tr>
           <th>カナ</th>
@@ -34,11 +33,15 @@
           <td><%= @customer.email %></td>
         </tr>
       </table>
-      <div>
-        <h4><strong>配送先</strong></h4>
-        <%= link_to "一覧を見る", addresses_path %>
-        <h4><strong>注文履歴</strong></h4>
-        <%= link_to "一覧を見る", orders_path %>
+      <div class="col-7">
+        <div class="row my-4">
+          <h4 class="col-2"><strong>配送先</strong></h4>
+          <%= link_to "一覧を見る", addresses_path, class: "col-2 btn btn-primary" %>
+        </div>
+        <div class="row my-3">
+          <h4 class="col-2"><strong>注文履歴</strong></h4>
+          <%= link_to "一覧を見る", orders_path, class: "col-2 btn btn-primary" %>
+        </div>
       </div>
     </div>
   </div>

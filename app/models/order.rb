@@ -2,10 +2,8 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :customer
 
-  # 税率計算用
-  def add_tax_price
-    (self.price * 1.10).round
-  end
+
+
 
   # 郵便番号は数字記述のみ、７文字のみ、空白なし
   validates :postal_code, format: { with:/\A[0-9０-９]+\z/ }, length: {is: 7}, presence: true

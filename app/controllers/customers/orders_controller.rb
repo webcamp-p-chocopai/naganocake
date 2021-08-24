@@ -17,6 +17,7 @@ class Customers::OrdersController < ApplicationController
   def new
     @customer = current_customer
     @order = Order.new
+
   end
 
   def create
@@ -42,47 +43,47 @@ class Customers::OrdersController < ApplicationController
     redirect_to orders_thanks_path
   end
 
-
   def check
     # ↓カート内が空の時にホーム画面に飛ばす(まとめて記述できる？)
     #if current_customer.cart_items.blank?
     #  redirect_to root_path
     #end
     @cart_items = current_customer.cart_items
-    @order = Order.new(order_params)
-    @ntax_price = cart_item.item.non_taxed_price
+    # @order = Order.new(order_params)
+    @order = Order.new
     @freight = 800
     # ↓商品合計
     @total_price = 0
     @cart_items.each do |cart_item|
-      @total_price += @ntax_price * cart_item.item_qty.add_tax_price# ←だめなら*1.1にもどす
+      @total_price += ((cart_item.item.non_taxed_price * cart_item.item_qty) * 1.1).floor
     end
     # ↓newページのラジオボタンで自身の住所を選択したとき
     if params[:order][:address_op] == "1"
       @order.postal_code = current_customer.cust_postal_code
-      @order.address = current_customer.address
+      @order.dear_address = current_customer.cust_address
       @order.dear_name = current_customer.first_name + current_customer.last_name
       #                  ↑customer_full_name(current_customer)でも可？
     # ↓登録住所から選択したとき
     elsif params[:order][:address_op] == "2"
       # ↓配送先住所のidを特定する
-      @order_id = Address.find(params[:order][:address])
+      # @order_id = Address.find(params[:order][:address].to_i)
+      @address = Address.find(params[:order][:address].to_i)
       # ↓特定したidをもとにそれぞれ呼び出し
-      @order.postal_code = @order_id.postal_code
-      @order.address = @order_id.address
-      @order.dear_name = @order_id.dear_name
+      @order.postal_code = @address.postal_code
+      @order.dear_address = @address.address
+      @order.dear_name = @address.dear_name
     # ↓新しいお届け先を選択したとき
     else  # (params[:order][:address_op] == "3"のとき)
       @address = Address.new()
       # ↓newページで入力した新しいお届け先のデータを入れる(配送先追加)
-      @address.postal_code = params[:order][:postal_code]
-      @address.address = params[:order][:address]
-      @address.dear_name = params[:order][:dear_name]
-      @address.current_customer_id = current_customer.id
+      @address.postal_code = params[:order][:new_postal_code]
+      @address.address = params[:order][:new_address]
+      @address.dear_name = params[:order][:new_dear_name]
+      @address.customer_id = current_customer.id
       if @address.save
       # ↓注文テーブルにデータを入れる記述(上に記述したデータ流用)
         @order.postal_code = @address.postal_code
-        @order.address = @address.address
+        @order.dear_address = @address.address
         @order.dear_name = @address.dear_name
       else
         render 'new'
@@ -96,7 +97,7 @@ class Customers::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :postal_code, :address, :dear_name, :freight, :method_of_payment, :taxed_billing_price, :orderd_status)
+    params.require(:order).permit(:customer_id, :postal_code, :dear_address, :dear_name, :freight, :method_of_payment, :taxed_billing_price, :orderd_status, :address)
   end
 
   def address_params

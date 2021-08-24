@@ -1,17 +1,14 @@
-<!-- ブートストラップは後から記述します-->
 <!-- ジャンル編集画面-->
-<div>
- <div>
-   <div>
-     <h3>ジャンル編集</h3>
-     <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch, local: true do |f| %>
-     <div>
-       <%= f.label :ジャンル名 %>
-       <%= f.text_field :genre_name %>
-       <%= f.submit "変更を保存" %>
-     </div>
-     <% end %>
+<div class="container">
+  <div class="mx-3 my-3 col-6">
+    <h4 class="mt-3 text-center col-7">ジャンル編集</h4>
+    <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch, local: true do |f| %>
+    <div class="my-5">
+      <%= f.label :ジャンル名 %>
+      <%= f.text_field :genre_name, class: "mx-5" %>
+      <%= f.submit "変更を保存", class: "btn btn-success" %>
     </div>
+    <% end %>
   </div>
 </div>
 
