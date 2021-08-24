@@ -13,22 +13,22 @@
         <tbody>
           <% @customers.each do |customers| %>
           <tr>
-          <td><%= customers.id %></td>
-          <td><%= link_to  customers.full_name, admin_customer_path(customers.id), class: "customer_#{customers.id}" %></td>
-          <td><%= customers.email %></td>
-          <td>
+            <td><%= customers.id %></td>
+            <td><%= link_to  customers.full_name, admin_customer_path(customers.id), class: "customer_#{customers.id}" %></td>
+            <td><%= customers.email %></td>
+            <td>
             <!-- 退会済みが一段ずれる -->
-            <% if customers.is_deleted == true %>
-　            <p class="text-secondary">退会済</p>
+              <% if customers.is_deleted == true %>
+　              <p class="text-secondary">退会済</p>
               <% else %>
-              <p class="text-success">有効</p>
-            <% end %>
-          </td>
+                <p class="text-success">有効</p>
+              <% end %>
+            </td>
           </tr>
           <% end %>
-          <%= paginate @customer %>
         </tbody>
       </table>
     </div>
+    <div class="col-6 offset-5 text-center"><%= paginate @customer %></div>
   </div> 
 </div>

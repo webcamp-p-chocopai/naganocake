@@ -10,14 +10,14 @@
         </tr>
         <tr>
           <td><%= f.label:氏名, class: "float-left" %></td>
-          <td><%= f.text_field :first_name, class:"form-control" %><br>
           <td><%= f.text_field :last_name, class:"form-control" %></td>
+          <td><%= f.text_field :first_name, class:"form-control" %></td>
         </tr>
 
         <tr>
           <td><%= f.label :フリガナ, class: "float-left" %></td>
-          <td><%= f.text_field :kana_first_name, class:"form-control" %></td>
           <td><%= f.text_field :kana_last_name, class:"form-control" %></td>
+          <td><%= f.text_field :kana_first_name, class:"form-control" %></td>
         </tr>
  
         <tr>
@@ -43,9 +43,10 @@
 
         <tr>
           <td><%= f.label :"会員ステータス", class: "float-left" %></td>
-          <!-- ガッタンゴットン -->
-          <td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効"%>
-              <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会" %></td>
+          <td> 
+            <%= f.radio_button :is_deleted, false %><span class='mr-3'>有効</span>
+            <%= f.radio_button :is_deleted, true %><span>退会</span>
+          </td>
         </tr>
         </table>
         <div class="actions">
