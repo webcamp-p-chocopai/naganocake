@@ -7,6 +7,8 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @all_items = Item.where(sale_status: true)
+    @items = @all_items.page(params[:page]).per(8)
   end
 
   def new
@@ -17,7 +19,7 @@ class Admin::ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     item.save
-    redirect_to admin_items_path
+    redirect_to admin_item_path(item)
   end
 
   def edit
