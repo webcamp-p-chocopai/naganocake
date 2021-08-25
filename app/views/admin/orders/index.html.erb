@@ -1,4 +1,4 @@
-<div class="container px-">
+<div class="container px-2">
   <div class="row mt-4 mb-3">
     <div class="col-md-3">
       <h4 class="title-order">注文履歴一覧</h4>
@@ -18,7 +18,7 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-            <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(order) %></td>
+            <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(order), class:"text-secondary" %></td>
             <td>
               <%= order.customer.last_name %>
               <%= order.customer.first_name %>
