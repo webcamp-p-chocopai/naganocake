@@ -36,7 +36,7 @@ class Customers::OrdersController < ApplicationController
       @order_item.purchase_quantity = cart_item.item_qty
       @order_item.texed_purchase_price = cart_item.item.non_taxed_price * 1.1.floor
       @order_item.order_id = @order.id
-      @order_item.save
+      @order_item.save!
     end
     #↓注文完了時にカート内のデータを消してthanxページに飛ぶ
     current_customer.cart_items.destroy_all
@@ -92,6 +92,7 @@ class Customers::OrdersController < ApplicationController
   end
 
   def thanks
+
   end
 
   private

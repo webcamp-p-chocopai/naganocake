@@ -8,13 +8,13 @@
     <%= form_with model: @customer, url: customers_path, local: true do |f| %>
     <div>
       <%= f.label :氏名 %>
-      <%= f.text_field :first_name %>
       <%= f.text_field :last_name %>
+      <%= f.text_field :first_name %>
     </div>
     <div>
       <%= f.label :フリガナ %>
-      <%= f.text_field :kana_first_name %>
       <%= f.text_field :kana_last_name %>
+      <%= f.text_field :kana_first_name %>
     </div>
     <div>
       <%= f.label :郵便番号 %>
