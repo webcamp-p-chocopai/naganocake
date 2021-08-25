@@ -1,7 +1,8 @@
 <div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-8 offset-2 mt-5'>
-      <h2>会員一覧</h2>
+  <div class='row mb-3 mt-4'>
+    <div class='col-md-8 offset-2'> 
+      <!-- tr部分全てにかかったようになる -->
+      <h4 class="title-order">会員一覧</h4>
       <table class='table'>
         <tr>
           <td>会員ID</td>
@@ -12,20 +13,24 @@
         <tbody>
           <% @customers.each do |customers| %>
           <tr>
-          <td><%= customers.id %></td>
-          <td><%= link_to  customers.full_name, admin_customer_path(customers.id), class: "customer_#{customers.id}" %></td>
-          <td><%= customers.email %></td>
-          <td>
-            <% if customers.is_deleted == true %>
-              <p class="text-secondary">退会済</p>
+
+            <td><%= customers.id %></td>
+            <td><%= link_to  customers.full_name, admin_customer_path(customers.id), class: "customer_#{customers.id}" %></td>
+            <td><%= customers.email %></td>
+            <td>
+            <!-- 退会済みが一段ずれる -->
+              <% if customers.is_deleted == true %>
+　              <p class="text-secondary">退会済</p>
+
               <% else %>
-              <p class="text-success">有効</p>
-            <% end %>
-          </td>
+                <p class="text-success">有効</p>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
       </table>
     </div>
+    <div class="col-6 offset-5 text-center"><%= paginate @customer %></div>
   </div> 
 </div>
