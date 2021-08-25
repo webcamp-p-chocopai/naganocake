@@ -1,7 +1,7 @@
 <div class="container px-5">
   <div class="row mt-4 mb-2">
     <h4 class="title-order">注文履歴詳細</h4>
-    <table class="table table-borderless ">
+    <table class="table table-borderless">
       <tbody>
         <tr>
           <th><strong>購入者</strong></th>
@@ -19,7 +19,7 @@
         <tr>
           <th><strong>配送先</strong></th>
           <td>
-            <p><%= @order.postal_code %><%= @order.dear_address %></p>
+            <p>〒<%= @order.postal_code %> <%= @order.dear_address %></p>
             <p><%= @order.dear_name %></p>
           </td>
         </tr>
@@ -77,15 +77,15 @@
         <tbody>
           <tr>
             <th><strong>商品合計</strong></th>
-            <td><%= @total_price %>円</td>
+            <td><%= @total_price.to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <th><strong>送料</strong></th>
-            <td><%= @freight %>円</td>
+            <td><%= @freight.to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <th><strong>請求金額合計</strong></th>
-            <td><strong><%= @total_price + @freight %>円</strong></td>
+            <td><strong><%= ( @total_price + @freight ).to_s(:delimited) %>円</strong></td>
           </tr>
         </tbody>
       </table>
