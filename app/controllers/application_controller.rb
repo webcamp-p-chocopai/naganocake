@@ -10,6 +10,15 @@ class ApplicationController < ActionController::Base
       admin_orders_path
     end
   end
+  
+  def after_sign_up_path_for(resource)
+    case resource
+    when Customer
+      customers_path(resource)
+    end
+  end
+
+  
 
   protected
 
