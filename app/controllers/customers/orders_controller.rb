@@ -1,16 +1,17 @@
 class Customers::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  def index
-    @orders = Order.all
-    @order = Order.page(params[:page]).per(10)
-    @freight = 800
-  end
 
 
-  def show
-    @order = Order.find(params[:id])
-    @freight = 800
-  end
+
+
+
+
+
+
+
+
+
+
 
 
   def new
@@ -26,7 +27,7 @@ class Customers::OrdersController < ApplicationController
     #end
     # ↓注文(orders)テーブルに保存
     @order = current_customer.orders.new(order_params)
-    @order.save!
+    @order.save
     # ↓注文(cart_items)テーブルにデータを入れる(保存する)記述
     # ↓each文で商品カート(cart_items)をとりだす
     current_customer.cart_items.each do |cart_item|
@@ -35,7 +36,7 @@ class Customers::OrdersController < ApplicationController
       @order_item.purchase_quantity = cart_item.item_qty
       @order_item.texed_purchase_price = cart_item.item.non_taxed_price * 1.1.floor
       @order_item.order_id = @order.id
-      @order_item.save
+      @order_item.save!
     end
     #↓注文完了時にカート内のデータを消してthanxページに飛ぶ
     current_customer.cart_items.destroy_all
@@ -91,6 +92,7 @@ class Customers::OrdersController < ApplicationController
   end
 
   def thanks
+
   end
 
   private
@@ -105,6 +107,3 @@ class Customers::OrdersController < ApplicationController
 
 
 end
-
-
-
