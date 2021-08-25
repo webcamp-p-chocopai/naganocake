@@ -3,8 +3,6 @@ class Order < ApplicationRecord
   belongs_to :customer
 
 
-
-
   # 郵便番号は数字記述のみ、７文字のみ、空白なし
   validates :postal_code, format: { with:/\A[0-9０-９]+\z/ }, length: {is: 7}, presence: true
   # 住所空白なし

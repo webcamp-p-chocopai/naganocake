@@ -1,12 +1,12 @@
-<table class="table table-bordered text-center genre_search_table">
+<table class="table table-bordered genre-search-table">
   <thead>
-    <tr class="table-head">
+    <tr>
       <th>ジャンル検索</th>
     </tr>
   </thead>
   <tbody>
     <% genres.each do |genre| %>
-    <tr class="table-body">
+    <tr>
       <td>
         <%= link_to genre.genre_name, items_path(genre_id: genre.id), class:"genre_search_name" %>
       </td>
