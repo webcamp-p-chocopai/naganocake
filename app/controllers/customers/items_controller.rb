@@ -10,7 +10,4 @@ class Customers::ItemsController < ApplicationController
       @genres = Genre.all
       @cart_item = CartItem.new
   end
-
-
-
 end
