@@ -1,17 +1,16 @@
 class Customers::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  def index
+    @orders = Order.all
+    @order = Order.page(params[:page]).per(10)
+    @freight = 800
+  end
 
 
-
-
-
-
-
-
-
-
-
-
+  def show
+    @order = Order.find(params[:id])
+    @freight = 800
+  end
 
 
   def new
@@ -27,7 +26,7 @@ class Customers::OrdersController < ApplicationController
     #end
     # ↓注文(orders)テーブルに保存
     @order = current_customer.orders.new(order_params)
-    @order.save
+    @order.save!
     # ↓注文(cart_items)テーブルにデータを入れる(保存する)記述
     # ↓each文で商品カート(cart_items)をとりだす
     current_customer.cart_items.each do |cart_item|
@@ -107,3 +106,6 @@ class Customers::OrdersController < ApplicationController
 
 
 end
+
+
+
