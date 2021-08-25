@@ -47,7 +47,7 @@ class Customers::OrdersController < ApplicationController
     #  redirect_to root_path
     #end
     @cart_items = current_customer.cart_items
-    # @order = Order.new(order_params)
+    # リロードしてもエラーが出ないじょうたいにしたい
     @order = Order.new
     @freight = 800
     # ↓商品合計
@@ -64,7 +64,6 @@ class Customers::OrdersController < ApplicationController
     # ↓登録住所から選択したとき
     elsif params[:order][:address_op] == "2"
       # ↓配送先住所のidを特定する
-      # @order_id = Address.find(params[:order][:address].to_i)
       @address = Address.find(params[:order][:address].to_i)
       # ↓特定したidをもとにそれぞれ呼び出し
       @order.postal_code = @address.postal_code
