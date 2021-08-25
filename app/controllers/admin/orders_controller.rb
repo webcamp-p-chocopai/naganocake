@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @all_orders = Order.all
-    @orders = @all_orders.page(params[:page]).per(2)
+    @orders = @all_orders.page(params[:page]).per(10)
   end
 
   def show
