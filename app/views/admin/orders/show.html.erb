@@ -33,8 +33,6 @@
             <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
               <!-- 注文ステータスのpull downボタン -->
               <%= f.select :orderd_status, Order.orderd_statuses.keys.to_a %>
-              <%#= f.hidden_field :order_id, :value => @order.id %>
-              <%#= f.select :orderd_status, Order.orderd_statuses.values.to_a %>
               <%= f.submit "更新", class: "btn btn-outline-success" %>
             <% end %>
           </td>
@@ -47,7 +45,7 @@
     <div class="col-8">
       <table class="table table-bordered">
         <thead>
-          <tr class="table-head" style="background-color:#gray" >
+          <tr class="table-head" style="background-color: #bed3ca;">
             <th><strong>商品名</strong></th>
             <th><strong>単価（税込）</strong></th>
             <th><strong>数量</strong></th>
@@ -66,9 +64,6 @@
                 <%= form_with model: order_item, url: admin_order_order_item_path(@order.id, order_item.id), method: :patch, local: true do |f| %>
                   <!-- 製作ステータスのpull downボタン -->
                   <%= f.select :production_status, OrderItem.production_statuses.keys.to_a %>
-                  <%#= f.hidden_field :order_item_id, :value => order_item.id %>
-                  <%#= f.hidden_field :order_id, :value => @order.id %>
-                  <%#= f.select :production_status, OrderItem.production_statuses.values.to_a %>
                   <%= f.submit "更新", class: "btn btn-outline-success" %>
                 <% end %>
               </td>
