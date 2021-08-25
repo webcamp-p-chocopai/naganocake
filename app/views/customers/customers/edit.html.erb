@@ -1,40 +1,43 @@
 <!-- ブートストラップは後から記述します-->
 <!-- 会員情報編集画面-->
-<div>
-  <div>
-    <div>
-      <h3>会員情報編集</h3>
-    </div>
-    <%= form_with model: @customer, url: customers_path, local: true do |f| %>
-    <div>
-      <%= f.label :氏名 %>
-      <%= f.text_field :first_name %>
-      <%= f.text_field :last_name %>
-    </div>
-    <div>
-      <%= f.label :フリガナ %>
-      <%= f.text_field :kana_first_name %>
-      <%= f.text_field :kana_last_name %>
-    </div>
-    <div>
-      <%= f.label :郵便番号 %>
-      <%= f.text_field :cust_postal_code %>
-    </div>
-    <div>
-      <%= f.label :住所 %>
-      <%= f.text_field :cust_address %>
-    </div>
-    <div>
-      <%= f.label :電話番号 %>
-      <%= f.text_field :phone_number %>
-    </div>
-    <div>
-      <%= f.label :メールアドレス %>
-      <%= f.text_field :email %>
-    </div>
-    <div>
-      <%= f.submit "編集内容を保存" %>
-      <%= link_to "退会する", customers_check_path %>
+<div class="container">
+  <div class="row mx-2 my-3">
+    <h3 class="col-4 text-center">会員情報編集</h3>
+  </div>
+  <%= form_with model: @customer, url: customers_path, local: true do |f| %>
+  <div class="col-8">
+    <table class="table table-borderless">
+      <tr>
+        <th class="col-2"><%= f.label :氏名 %></th>
+        <td class="col-2"><%= f.text_field :last_name, class: "border-radius: 50px;" %></td>
+        <td class="col-2"><%= f.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :フリガナ %></th>
+        <td><%= f.text_field :kana_last_name %></td>
+        <td><%= f.text_field :kana_first_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :郵便番号 %></th>
+        <td><%= f.text_field :cust_postal_code %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :住所 %></th>
+        <td colspan="2" class"col-7"><%= f.text_field :cust_address %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th><%= f.label :電話番号 %></th>
+        <td><%= f.text_field :phone_number %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :メールアドレス %></th>
+        <td><%= f.text_field :email %></td>
+      </tr>
+    </table>
+    <div class="mb-5 text-center">
+      <%= f.submit "編集内容を保存", class:"btn btn-success mx-3 col-4" %>
+      <%= link_to "退会する", customers_check_path, class:"btn btn-danger mx-3 col-3" %>
     </div>
     <% end %>
   </div>
