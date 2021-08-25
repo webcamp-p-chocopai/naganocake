@@ -1,26 +1,25 @@
 <div class='container px-5 px-sm-0'>
   <div class='row mb-5'>
-    <div class='col-md-3'>
-       <%= render 'customers/items/genre_sidebar', genres: @genres %>
-    </div>
+    <div class='col-md-3 mt-5'>
+      <%= render 'customers/items/genre_sidebar', genres: @genres %>
     </div>
     <!-- メインビジュアル -->
-    <div class='col-md-8 offset-md-5'>
+    <div class='col-md-8 offset-md-4'>
       <div>
         ようこそ、ながのCAKEへ！<br>
         このサイトでは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。
+      </div>
+    </div>
   </div>
-  <div class='row float-right'>
     <div class='row float-center'>新着商品</div>
       <% @item.each do |item| %>
-      <div>
-        <table class='table table-borderless'>
-          <tr><th><%= attachment_image_tag item, :item_image, format: 'jpg' , fallback: "no_image_cake.jpg", size: "100x80" %></th></tr>
-
+      <div class='row float-right'>
+        <table class='table table-borderless mt-5 ml-4'>
+          <tr><th><%= attachment_image_tag item, :item_image, format: 'jpg' , fallback: "no_image_cake.jpg", size: "150x150" %></th></tr>
           <tr><td><%= item.item_name %></td></tr>
-	        <tr><td>¥<%= item.non_taxed_price %></td></tr>
+	        <tr><td>¥<%= (item.non_taxed_price*1.1).floor %></td></tr>
         </table>
       </div>
     <% end %>
