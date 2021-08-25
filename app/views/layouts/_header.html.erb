@@ -10,8 +10,8 @@
         <ul class="nav navbar-nav ml-auto">
         <!-- 顧客がログインしている時 -->
         <% if customer_signed_in? %>
-        　<ul class="navbar nav-customer-name">
-          　<li>ようこそ、<%= current_customer.first_name %>さん ！</li>
+        <ul class="navbar nav-customer-name">
+            <li>ようこそ、<%= current_customer.first_name %>さん ！</li>
           </ul>
           <li class="nav-item">
             <%= link_to customers_path do %>
