@@ -24,17 +24,17 @@
       
           <tr>
             <td><%= f.label :郵便番号（ハイフンなし）, class: "float-left" %></td>
-            <td><%= f.text_field :postal_code, autocomplete: "postal_code", class: "col-auto form-control form-control-md w-100" %></td>
+            <td><%= f.text_field :cust_postal_code, autocomplete: "cust_postal_code", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
       
           <tr>
             <td><%= f.label :住所, class: "float-left" %></td>
-            <td><%= f.text_field :address, autocomplete: "address", class: "col-auto form-control form-control-md w-100" %></td>
+            <td><%= f.text_field :cust_address, autocomplete: "cust_address", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
           
           <tr>
             <td><%= f.label :電話番号（ハイフンなし）, class: "float-left" %></td>
-            <td><%= f.number_field :phone_number, autocomplete: "phone_number", class: "col-auto form-control form-control-md w-100" %></td>
+            <td><%= f.text_field :phone_number, autocomplete: "phone_number", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
           
           <tr>
