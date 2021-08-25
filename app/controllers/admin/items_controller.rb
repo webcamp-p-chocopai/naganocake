@@ -8,7 +8,7 @@ class Admin::ItemsController < ApplicationController
   def index
     @items = Item.all
     @all_items = Item.where(sale_status: true)
-    @items = @all_items.page(params[:page]).per(8)
+    @items = @all_items.page(params[:page]).per(10)
   end
 
   def new
