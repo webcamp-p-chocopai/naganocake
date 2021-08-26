@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-2">
-　　  <!-- ジャンル検索サイドバー　-->
+      <!-- ジャンル検索サイドバー  -->
       <%= render 'customers/items/genre_sidebar', genres: @genres %>
     </div>
     <div class="col-md-9">
@@ -17,7 +17,7 @@
               </th>
             </tr>
             <tr>
-              <th class="item-name"><%= link_to item.item_name.truncate(15), item_path(item) %></th>
+              <th><%= link_to item.item_name.truncate(15), item_path(item), class:"text-secondary" %></th>
             </tr>
             <tr>
               <th>¥<%= ((item.non_taxed_price * 1.1).round).to_s(:delimited) %></th>

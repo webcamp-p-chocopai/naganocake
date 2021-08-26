@@ -16,7 +16,7 @@
           <!--ご自身の住所-->
           <label><%= f.radio_button :address_op, "1", checked: true %>ご自身の住所</label><br>
           <p class="ml-4">〒<%= current_customer.cust_postal_code %>&emsp;<%= current_customer.cust_address %><br>
-          <%= current_customer.first_name %><%= current_customer.last_name %><br></p>
+          <%= current_customer.last_name %><%= current_customer.first_name %><br></p>
         </div>
         <div class="ml-5">
           <!--登録済み住所から選択-->
