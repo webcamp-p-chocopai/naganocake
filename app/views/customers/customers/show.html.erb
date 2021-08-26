@@ -1,14 +1,14 @@
 <!-- 会員詳細画面-->
 <div class="container mx-5">
-  <div class="row">
-    <h3 class="col-6 my-3">マイページ</h3>
+  <div class="row mx-5">
+    <h3 class="col-3 my-3 mx-5 text-center" style="background-color:#a99e93;">マイページ</h3>
   </div>
   <div class="row my-3">
-    <h4 class="mx-2 col-3"><strong>登録情報</strong></h4>
+    <h4 class="mx-2 col-4"><strong>登録情報</strong></h4>
     <%= link_to "編集する", edit_customers_path, method: :get, class: "col-2 btn btn-success mx-2" %>
   </div>
   <div class="row my-2">
-    <table class="table table-bordered col-6">
+    <table class="table table-bordered table-striped col-7">
       <tr>
         <th class="col-2">氏名</th>
         <td class="col-5"><%= @customer.last_name %>  <%= @customer.first_name %></td>
@@ -37,11 +37,11 @@
   </div>
   <div class="row my-4">
     <h4 class="col-2"><strong>配送先</strong></h4>
-    <%= link_to "一覧を見る", addresses_path, class: "col-2 btn btn-primary" %>
+    <%= link_to "一覧を見る", addresses_path, class: "col-2 btn btn-outline-primary" %>
   </div>
   <div class="row my-3">
     <h4 class="col-2"><strong>注文履歴</strong></h4>
-    <%= link_to "一覧を見る", orders_path, class: "col-2 btn btn-primary" %>
+    <%= link_to "一覧を見る", orders_path, class: "col-2 btn btn-outline-primary" %>
   </div>
 </div>
 
