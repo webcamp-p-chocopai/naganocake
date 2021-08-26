@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div class="row mt-5">
-    <div class="col-md-2">
+    <div class="col-2 col-md-2">
       <!-- ジャンル検索サイドバー  -->
       <%= render 'customers/items/genre_sidebar', genres: @genres %>
     </div>
-    <div class="col-md-9">
-      <h3 class="title-items"><strong>商品一覧</strong>（全<%= @all_items.count %>件）</h3>
+    <div class="col-9 col-md-9">
+      <h3 class="p-3 mb-2 w-50 text-center" style="color: #bc8f8f; background: #8f6552; border-left: solid 5px #6c3524; border-bottom: solid 3px #7b5544;"><strong>商品一覧</strong>（全<%= @all_items.count %>件）</h3>
       <% @items.each do |item| %>
         <div class="item-box">
           <table class="table table-borderless">
