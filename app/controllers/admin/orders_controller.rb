@@ -4,17 +4,6 @@ class Admin::OrdersController < ApplicationController
   def index
     @all_orders = Order.all.order(created_at: :desc)
     @orders = @all_orders.page(params[:page]).per(10)
-<<<<<<< HEAD
-    
-    # case params[:order_sort]
-    #   when "0"
-    #     @orders = Order.all
-    #   when "1"
-    #   @customer = Customer.find(params[:customer_id])
-    #   @orders = @customer.orders
-    # end
-=======
->>>>>>> 438f18a15ef79a420792ba89314abfda9f902c73
   end
 
   def show
@@ -25,7 +14,7 @@ class Admin::OrdersController < ApplicationController
     # 商品合計
     @total_price = 0
     @order_items.each do |order_item|
-      @total_price += ((order_item.item.non_taxed_price * 1.1) * order_item.purchase_quantity).floor
+    @total_price += ((order_item.item.non_taxed_price * 1.1) * order_item.purchase_quantity).floor
     end
   end
 

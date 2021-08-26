@@ -1,7 +1,8 @@
 class Customers::OrdersController < ApplicationController
     before_action :authenticate_customer!
   def index
-    @orders = Order.all
+    @cutomer = current_customer
+    @orders = @customer.order
     @order = Order.page(params[:page]).per(10)
     @freight = 800
   end
