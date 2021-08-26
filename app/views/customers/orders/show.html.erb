@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-md-5'>
       <h3>注文情報</h3>
-        <table class='table table-bordered'>
+        <table class='table table-bordered table-hover'>
           <tr>
             <td>注文日</td>
             <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
@@ -27,7 +27,7 @@
     </div>
     <div class='col-md-3'>
       <h3>請求金額</h3>
-      <table class='table table-bordered'>
+      <table class='table table-bordered table-hover'>
         <tr>
           <td>商品合計</td>
           <td><%= @order.taxed_billing_price %></td>
@@ -47,7 +47,7 @@
   <div class='row'>
     <div class='col-md-8'>
       <h3>注文内容</h3>
-      <table class='table table-bordered'>
+      <table class='table table-bordered table-hover'>
         <thead>
           <tr>
             <td>商品</td>

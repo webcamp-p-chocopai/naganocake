@@ -1,7 +1,8 @@
 class Customers::OrdersController < ApplicationController
     before_action :authenticate_customer!
   def index
-    @orders = Order.all
+    @cutomer = current_customer
+    @orders = @customer.order
     @order = Order.page(params[:page]).per(10)
     @freight = 800
   end
@@ -15,7 +16,7 @@ class Customers::OrdersController < ApplicationController
     @customer = current_customer
     @order = Order.new
     if @customer.cart_items.blank?
-      flash[:warning] = "カートが空です"
+      flash[:warning] = "カートの中身がありません"
       redirect_to cart_items_path
     end
   end
