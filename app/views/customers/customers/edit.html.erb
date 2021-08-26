@@ -1,14 +1,13 @@
-<!-- ブートストラップは後から記述します-->
 <!-- 会員情報編集画面-->
 <div class="container">
-  <div class="row mx-2 my-3">
-    <h3 class="col-4 text-center">会員情報編集</h3>
+  <div class="row mx-5 my-4">
+    <h2 class="mx-5 col-4 text-center" style="background-color:#a99e93;">会員情報編集</h2>
   </div>
   <%= form_with model: @customer, url: customers_path, local: true do |f| %>
   <div class="col-8">
     <table class="table table-borderless">
       <tr>
-        <th class="col-2"><%= f.label :氏名 %></th>
+        <th class="col-3"><%= f.label :氏名 %></th>
         <td class="col-2"><%= f.text_field :last_name, class: "border-radius: 50px;" %></td>
         <td class="col-2"><%= f.text_field :first_name %></td>
       </tr>

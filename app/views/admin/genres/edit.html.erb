@@ -4,8 +4,9 @@
     <h4 class="p-3 mb-5 w-50 text-center" style="color: #494949; background: #80aba9; border-left: solid 5px #2f4f4f;">ジャンル編集</h4>
     <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch, local: true do |f| %>
     <div class="my-5">
-      <%= f.label :ジャンル名 %>
+      <b><%= f.label :ジャンル名 %></b>
       <%= f.text_field :genre_name, class: "mx-5" %>
+      <%= f.submit "変更を保存", class: "btn btn-success col-3" %>
       <%= f.submit "変更を保存", class: "btn btn-outline-success" %>
     </div>
     <% end %>
