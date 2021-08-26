@@ -21,33 +21,3 @@
 .item-image {
   float: left;
 }
-
-// ジャンル検索 //
-table.genre-search-table {
-  table-layout: auto;
-	width: 100%;
-	text-align: center;
-	background-color: #e6e6fa;
-}
-
-table.genre-search-table,
-table.genre-search-table th,
-table.genre-search-table td {
-  border-top: solid  2px #778899;
-  border-bottom: solid 2px #778899;
-	border-collapse: collapse;
-}
-
-th.top {
-	width: 100px;
-}
-
-table.genre-search-table td, 
-table.genre-search-table th {
-	padding: 10px;
-	box-sizing: border-box;
-}
-
-.genre_search_name {
-  color: #17184b;
-}
