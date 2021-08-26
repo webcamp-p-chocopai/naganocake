@@ -19,13 +19,3 @@
 //= require turbolinks
 //= require_tree .
 
-
-
-$(function() {
-  $('#slider').slick({
-      autoplay: true,
-      autoplaySpeed: 4000,
-      slidesToShow: 3, //表示するスライドの数
-      slidesToScroll: 1, //スクロールで切り替わるスライドの数
-  });
-});

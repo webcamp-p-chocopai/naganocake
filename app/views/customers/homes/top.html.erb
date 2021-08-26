@@ -26,7 +26,7 @@
           <%= attachment_image_tag item, :item_image, format: 'jpg' , fallback: "no_image_cake.jpg", size: "200x180" %>
           <% end %>
           </tr></td>
-          <tr><td><%= item.item_name.truncate(15) %></tr></td>
+          <tr><td><%= item.item_name %></tr></td>       
           <tr><td>¥<%= (item.non_taxed_price*1.1).floor %></tr></td>
         </table>
       </div>
