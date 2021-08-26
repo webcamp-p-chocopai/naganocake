@@ -7,7 +7,6 @@ class Customers::OrdersController < ApplicationController
     @freight = 800
   end
 
-
   def show
     @order = Order.find(params[:id])
     @freight = 800
@@ -16,7 +15,10 @@ class Customers::OrdersController < ApplicationController
   def new
     @customer = current_customer
     @order = Order.new
-
+    if @customer.cart_items.blank?
+      flash[:warning] = "カートが空です"
+      redirect_to cart_items_path
+    end
   end
 
   def create
@@ -60,7 +62,7 @@ class Customers::OrdersController < ApplicationController
     if params[:order][:address_op] == "1"
       @order.postal_code = current_customer.cust_postal_code
       @order.dear_address = current_customer.cust_address
-      @order.dear_name = current_customer.first_name + current_customer.last_name
+      @order.dear_name = current_customer.last_name + current_customer.first_name
       #                  ↑customer_full_name(current_customer)でも可？
     # ↓登録住所から選択したとき
     elsif params[:order][:address_op] == "2"
