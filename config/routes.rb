@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     put "/customers/hide" => "customers#hide", as: 'customers_hide'
 
     resources :items, only: [:show, :index]
+    get 'genres/index'
+    get 'genres/:id/search', to: 'genres#search', as: 'search'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :cart_items, only: [:create, :index, :edit, :update, :destroy]

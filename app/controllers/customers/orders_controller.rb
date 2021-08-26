@@ -6,7 +6,6 @@ class Customers::OrdersController < ApplicationController
     @freight = 800
   end
 
-
   def show
     @order = Order.find(params[:id])
     @freight = 800
@@ -15,7 +14,10 @@ class Customers::OrdersController < ApplicationController
   def new
     @customer = current_customer
     @order = Order.new
-
+    if @customer.cart_items.blank?
+      flash[:warning] = "カートが空です"
+      redirect_to cart_items_path
+    end
   end
 
   def create
@@ -47,7 +49,7 @@ class Customers::OrdersController < ApplicationController
     #  redirect_to root_path
     #end
     @cart_items = current_customer.cart_items
-    # @order = Order.new(order_params)
+    # リロードしてもエラーが出ないじょうたいにしたい
     @order = Order.new
     @freight = 800
     # ↓商品合計
@@ -59,12 +61,11 @@ class Customers::OrdersController < ApplicationController
     if params[:order][:address_op] == "1"
       @order.postal_code = current_customer.cust_postal_code
       @order.dear_address = current_customer.cust_address
-      @order.dear_name = current_customer.first_name + current_customer.last_name
+      @order.dear_name = current_customer.last_name + current_customer.first_name
       #                  ↑customer_full_name(current_customer)でも可？
     # ↓登録住所から選択したとき
     elsif params[:order][:address_op] == "2"
       # ↓配送先住所のidを特定する
-      # @order_id = Address.find(params[:order][:address].to_i)
       @address = Address.find(params[:order][:address].to_i)
       # ↓特定したidをもとにそれぞれ呼び出し
       @order.postal_code = @address.postal_code
