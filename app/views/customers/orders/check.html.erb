@@ -3,7 +3,7 @@
   <div class="row mt-4 mb-2">
     <div class="col-8">
 		 <h3 style=" text-align: center; background-color:#a99e93;">注文情報確認</h3>
-		 <table class="table table-bordered">
+		 <table class="table table-bordered table-hover">
       <tr>
         <th>商品名</th>
         <th>単価(税込み)</th>
@@ -30,7 +30,7 @@
     </table>
 	  </div>
 	  <div class="col-4 mt-5">
-	    <table class="table table-bordered">
+	    <table class="table table-bordered table-hover">
         <tr>
           <th>送料</th>
           <td>¥<%= @freight.to_s(:delimited) %></td>
