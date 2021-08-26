@@ -1,80 +1,62 @@
-<h2>新規会員登録</h2>
-<%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= render "devise/shared/error_messages", resource: resource %>
   <div class="mx-auto container">
     <div class="form-group form-inline row">
-      <div class="field col-3">
-        <%= f.label:名前（姓）, class: "float-left" %><br />
-        <%= f.text_field :first_name, autofocus: true, class: "col-lg-offset-3 form-control form-control-lg w-100" %>
-      </div>
-      <div class="field col-3">
-        <%= f.label :名前（名）, class: "float-left" %><br />
-        <%= f.text_field :last_name, class: "col-auto form-control form-control-lg w-100" %>
+      <div class="col-md-10 mt-5">
+        <h2>新規会員登録</h2>
+        <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+        <table class='table table-borderless'>
+          <tr>
+            <td><%= f.label:名前, class: "float-left" %></td>
+            <td>(性)<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control form-control-md w-100" %></td>
+            <td>(名)<%= f.text_field :first_name, autocomplete: "first_name", class: "col-auto form-control form-control-md w-100" %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :フリガナ, class: "float-left" %></td>
+            <td>(セイ)<%= f.text_field :kana_last_name, autocomplete: "kana_last_name", class: "form-control form-control-md w-100" %></td>
+            <td>(メイ)<%= f.text_field :kana_first_name, autocomplete: "kana_first_name", class: "form-control form-control-md w-100" %></td>
+          </tr>
+      
+          <tr>
+            <td><%= f.label :メールアドレス, class: "float-left" %></td>
+            <td><%= f.email_field :email, autocomplete: "email", class: "col-auto form-control form-control-md w-100" %></td>
+           </tr>
+      
+          <tr>
+            <td><%= f.label :郵便番号（ハイフンなし）, class: "float-left" %></td>
+            <td><%= f.text_field :cust_postal_code, autocomplete: "cust_postal_code", class: "col-auto form-control form-control-md w-100" %></td>
+          </tr>
+      
+          <tr>
+            <td><%= f.label :住所, class: "float-left" %></td>
+            <td><%= f.text_field :cust_address, autocomplete: "cust_address", class: "col-auto form-control form-control-md w-100" %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :電話番号（ハイフンなし）, class: "float-left" %></td>
+            <td><%= f.text_field :phone_number, autocomplete: "phone_number", class: "col-auto form-control form-control-md w-100" %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :パスワード６文字以上, class: "float-left" %></td>
+            <td><%= f.password_field :password, autocomplete: "new-password", class: "col-auto form-control form-control-md w-100" %></td>    
+          </tr>
+      
+          <tr>
+            <td><%= f.label :パスワード（確認用）, class: "float-left" %></td>
+            <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-auto form-control form-control-md w-100" %></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit "新規登録", class: "btn btn-primary col-md-12" %></td>
+          </tr>
+        </table>
+        <% end %>
       </div>
     </div>
-      <div class="form-group form-inline row">
-        <div class="field col-3">
-          <%= f.label :名前（セイ）, class: "float-left" %><br />
-          <%= f.text_field :kana_first_name, class: "col-auto form-control form-control-lg w-100" %>
-        </div>
-        <div class="field col-3">
-          <%= f.label :名前（メイ）, class: "float-left" %><br />
-          <%= f.text_field :kana_last_name, class: "col-auto form-control form-control-lg w-100" %>
-        </div>
-      </div>
-      
-      <div class="form-group form-inline row">
-        <div class="field col-3">
-    　     <%= f.label :email %><br />
-          <%= f.email_field :email, autocomplete: "email" %>
-        </div>
-      </div>
-      
-      <div class="form-group form-inline row">
-        <div class="field col-6">
-          <%= f.label :郵便番号（ハイフン無しで入力して下さい） %><br />
-          <%= f.text_field :cust_postal_code, class: "col-auto form-control form-control-lg w-100" %>
-        </div>
-      </div>
-      
-      <div class="form-group form-inline row">
-        <div class="field col-6">
-          <%= f.label :住所 %><br />
-          <%= f.text_field :cust_address, class: "col-auto form-control form-control-lg w-100" %>
-        </div>
-      </div>
-      
-      <div class="form-group form-inline row">
-        <div class="field col-6">
-          <%= f.label :電話番号（ハイフン無しで入力して下さい） %><br />
-          <%= f.number_field :phone_number, class: "col-auto form-control form-control-lg w-100" %>
-        </div>
-      </div>
-      
-      <div class="form-group form-inline row">
-        <div class="field col-3">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-      </div>
-      
-      <div class="form-group form-inline row">
-        <div class="field col-3">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-      </div>
-      
-      <div class="form-group form-inline row">
-        <div class="actions">
-          <%= f.submit "Sign up" %>
-        </div>
+    <div>
+      <div>既に登録済みの方</div>
+      <div class='ml-3 mb-5'><%= link_to("こちら", new_customer_session_path ) %>からログインしてください。</div>
     </div>
   </div>
-</div>
-<% end %>
-
-<%= render "devise/shared/links" %>

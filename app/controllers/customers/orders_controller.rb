@@ -1,22 +1,23 @@
 class Customers::OrdersController < ApplicationController
-  before_action :authenticate_customer!
+    before_action :authenticate_customer!
   def index
     @orders = Order.all
     @order = Order.page(params[:page]).per(10)
     @freight = 800
   end
 
-
   def show
     @order = Order.find(params[:id])
     @freight = 800
   end
 
-
   def new
     @customer = current_customer
     @order = Order.new
-
+    if @customer.cart_items.blank?
+      flash[:warning] = "カートの中身がありません"
+      redirect_to cart_items_path
+    end
   end
 
   def create
@@ -26,7 +27,7 @@ class Customers::OrdersController < ApplicationController
     #end
     # ↓注文(orders)テーブルに保存
     @order = current_customer.orders.new(order_params)
-    @order.save!
+    @order.save
     # ↓注文(cart_items)テーブルにデータを入れる(保存する)記述
     # ↓each文で商品カート(cart_items)をとりだす
     current_customer.cart_items.each do |cart_item|
@@ -35,7 +36,7 @@ class Customers::OrdersController < ApplicationController
       @order_item.purchase_quantity = cart_item.item_qty
       @order_item.texed_purchase_price = cart_item.item.non_taxed_price * 1.1.floor
       @order_item.order_id = @order.id
-      @order_item.save
+      @order_item.save!
     end
     #↓注文完了時にカート内のデータを消してthanxページに飛ぶ
     current_customer.cart_items.destroy_all
@@ -48,7 +49,7 @@ class Customers::OrdersController < ApplicationController
     #  redirect_to root_path
     #end
     @cart_items = current_customer.cart_items
-    # @order = Order.new(order_params)
+    # リロードしてもエラーが出ないじょうたいにしたい
     @order = Order.new
     @freight = 800
     # ↓商品合計
@@ -60,12 +61,11 @@ class Customers::OrdersController < ApplicationController
     if params[:order][:address_op] == "1"
       @order.postal_code = current_customer.cust_postal_code
       @order.dear_address = current_customer.cust_address
-      @order.dear_name = current_customer.first_name + current_customer.last_name
+      @order.dear_name = current_customer.last_name + current_customer.first_name
       #                  ↑customer_full_name(current_customer)でも可？
     # ↓登録住所から選択したとき
     elsif params[:order][:address_op] == "2"
       # ↓配送先住所のidを特定する
-      # @order_id = Address.find(params[:order][:address].to_i)
       @address = Address.find(params[:order][:address].to_i)
       # ↓特定したidをもとにそれぞれ呼び出し
       @order.postal_code = @address.postal_code
@@ -91,6 +91,7 @@ class Customers::OrdersController < ApplicationController
   end
 
   def thanks
+
   end
 
   private
@@ -105,6 +106,3 @@ class Customers::OrdersController < ApplicationController
 
 
 end
-
-
-
