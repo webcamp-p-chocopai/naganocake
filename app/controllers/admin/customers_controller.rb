@@ -7,6 +7,10 @@ class Admin::CustomersController < ApplicationController
   
   def show
     @customer = Customer.find(params[:id])
+    
+    # case params[:order_sort]
+    
+    # end
   end 
   
   def edit
