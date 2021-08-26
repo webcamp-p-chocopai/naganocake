@@ -3,7 +3,15 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @all_orders = Order.all
-    @orders = @all_orders.page(params[:page]).per(2)
+    @orders = @all_orders.page(params[:page]).per(10)
+    
+    # case params[:order_sort]
+    #   when "0"
+    #     @orders = Order.all
+    #   when "1"
+    #   @customer = Customer.find(params[:customer_id])
+    #   @orders = @customer.orders
+    # end
   end
 
   def show
