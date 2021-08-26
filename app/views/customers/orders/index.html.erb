@@ -2,7 +2,7 @@
   <div class='row mt-5'>
     <div class='col-md-10 offset-1'>
       <div class='ml-5 mb-3 h3'>注文履歴一覧</div>
-      <table class='table table-bordered'>
+      <table class='table table-bordered table-hover'>
         <thead class='table-secondary'>
           <tr>
             <td>注文日</td>
@@ -28,7 +28,7 @@
               </td>
               <td><%= (order.taxed_billing_price) + (@freight) %> 円</td>
               <td><%= order.orderd_status %></td>
-              <td><%= link_to '表示する',order_path(order.id), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to '表示する',order_path(order.id), class: "btn btn-sm btn-outline-success" %></td>
             </tr>
           <% end %>
         </tbody>
