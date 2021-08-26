@@ -1,19 +1,51 @@
-<div class="row">
-  <div class="col-md-6"> 
-   <h2 class="p-3 mb-2 bg-secondary text-white w-25 text-center">商品詳細</h2>
-   <%= attachment_image_tag @item, :item_image , format: 'jpg', fallback: "no_image.jpg", size: "300x200" %>
+<div class="container">
+  <div class="row mt-5 mb-4">
+    <div class="col-3 col-md-6">
+      <h4 class="p-3 mb-2 w-50 text-center" style="color: #494949; background: #80aba9; border-left: solid 5px #2f4f4f;">商品詳細</h4>
+    </div>
   </div>
-  <div class="col-md-6"> 
-    <p>商品名：<%= @item.item_name %></p>
-    <p>商品説明：<%= @item.item_explanation %></p>
-    <p>ジャンル：<%= @item.genre.genre_name %></p>
-    <p>税抜価格：<%= @item.non_taxed_price %></p>
-    <p>販売ステータス : <% if @item.sale_status? %>
-            販売中
-          <% else %>
-            販売停止中
-          <% end %>
-    </p>
-    <p><%= link_to "編集する" ,edit_admin_item_path(@item) %></p>
+  <div class="row mt-4 mb-5">
+    <div class="col-4">
+      <%= attachment_image_tag @item, :item_image , format: 'jpg', fallback: "no_image.jpg", size: "300x250" %>
+    </div>
+    <div class="col-8">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>商品名</th>
+            <td><%= @item.item_name %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td><%= @item.item_explanation %></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= @item.genre.genre_name %></td>
+          </tr>
+          <tr>
+            <th>税抜価格</th>
+            <td><%= @item.non_taxed_price %></td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td>
+              <% if @item.sale_status? %>
+                <div class="text-success">販売中</div>
+              <% else %>
+                <div class="text-secondary">販売停止中</div>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <div class="row mt-5">
+		<div class="col-4 offset-4">
+		  <div class="text-center">
+		    <%= link_to "編集する" ,edit_admin_item_path(@item), class: "btn btn-outline-success" %>
+		  </div>
+		</div>
+	</div>
 </div>
