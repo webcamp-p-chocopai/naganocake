@@ -1,6 +1,6 @@
-<div class="container px-5">
+<div class="container px-3">
   <div class="row mt-4 mb-2">
-    <h4 class="title-order">注文履歴詳細</h4>
+    <h4 class="p-3 mb-2 w-25 text-center" style="color: #494949; background: #80aba9; border-left: solid 5px #2f4f4f;">注文履歴詳細</h4>
     <table class="table table-borderless">
       <tbody>
         <tr>
@@ -64,7 +64,7 @@
                 <%= form_with model: order_item, url: admin_order_order_item_path(@order.id, order_item.id), method: :patch, local: true do |f| %>
                   <!-- 製作ステータスのpull downボタン -->
                   <%= f.select :production_status, OrderItem.production_statuses.keys.to_a %>
-                  <%= f.submit "更新", class: "btn btn-outline-success" %>
+                  <%= f.submit "更新", class: "btn btn-outline-success btn-sm" %>
                 <% end %>
               </td>
             </tr>
