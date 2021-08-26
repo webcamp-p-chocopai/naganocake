@@ -15,7 +15,7 @@ class Customers::OrdersController < ApplicationController
     @customer = current_customer
     @order = Order.new
     if @customer.cart_items.blank?
-      flash[:warning] = "カートが空です"
+      flash[:warning] = "カートの中身がありません"
       redirect_to cart_items_path
     end
   end
