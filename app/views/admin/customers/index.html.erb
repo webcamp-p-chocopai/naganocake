@@ -2,9 +2,9 @@
   <div class='row mb-3 mt-4'>
     <div class='col-md-8 offset-2'> 
       <!-- tr部分全てにかかったようになる -->
-      <h4 class="title-order">会員一覧</h4>
-      <table class='table'>
-        <tr>
+      <h4 class="p-3 mb-2 w-25 text-center" style="color: #494949; background: #80aba9; border-left: solid 5px #2f4f4f;">会員一覧</h4>
+      <table class='table table-hover mt-4'>
+        <tr class="" style="background-color: #bed3ca;">
           <td>会員ID</td>
           <td>氏名</td>
           <td>メールアドレス</td>
@@ -14,7 +14,7 @@
           <% @customers.each do |customers| %>
           <tr>
           <td><%= customers.id %></td>
-          <td><%= link_to  customers.full_name, admin_customer_path(customers.id), class: "customer_#{customers.id}" %></td>
+          <td><%= link_to  customers.full_name, admin_customer_path(customers.id), class: "customer_#{customers.id} text-secondary" %></td>
           <td><%= customers.email %></td>
           <td>
             <% if customers.is_deleted == true %>
@@ -28,6 +28,6 @@
         </tbody>
       </table>
     </div>
-    <div class="col-6 offset-5 text-center"><%= paginate @customer %></div>
+    <div class="col-6 offset-3 text-center"><%= paginate @customer %></div>
   </div>
 </div>

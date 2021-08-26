@@ -1,13 +1,12 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def show
     @item = Item.find(params[:id])
   end
 
   def index
-    @items = Item.all
-    @all_items = Item.where(sale_status: true)
+    @all_items = Item.all
     @items = @all_items.page(params[:page]).per(10)
   end
 
