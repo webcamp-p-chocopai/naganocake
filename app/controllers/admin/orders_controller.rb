@@ -2,9 +2,15 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @all_orders = Order.all.order(created_at: :desc)
-    @orders = @all_orders.page(params[:page]).per(10)
+    path = Rails.application.routes.recognize_path(request.referer)
+    # path[:controller]で遷移元コントローラーを、path[:action]でアクションを取得
+    if  path[:controller] == "admin/customers" && path[:action] == "show"
+      @orders = Order.where(customer_id: path[:id]).page(params[:page]).per(10).reverse_order
+    else
+      @orders = Order.all.page(params[:page]).per(10).reverse_order
+    end
   end
+
 
   def show
     @order = Order.find(params[:id])
