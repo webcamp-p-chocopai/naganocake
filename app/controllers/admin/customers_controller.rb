@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+  before_action :configure_permitted_parameters, if: :devise_controller?
   
   def index
     @customers = Customer.all.order(:id)

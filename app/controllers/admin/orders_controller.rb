@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
     # 商品合計
     @total_price = 0
     @order_items.each do |order_item|
-      @total_price += ((order_item.item.non_taxed_price * 1.1) * order_item.purchase_quantity).floor
+    @total_price += ((order_item.item.non_taxed_price * 1.1) * order_item.purchase_quantity).floor
     end
   end
 

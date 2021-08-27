@@ -15,7 +15,7 @@
           <tr>
             <td><%= f.label :"宛名", class: "float-left" %></td>
             <td><%= f.text_field :dear_name, placeholder:"令和道子", class: "col-auto form-control form-control-sm w-200" %></td>
-            <td> <%= f.submit '新規登録', class: "btn btn-sm btn-success address_path" %></td>
+            <td> <%= f.submit '新規登録', class: "btn btn-sm btn-outline-success address_path" %></td>
           </tr>
         </table>
       </div>
@@ -23,7 +23,7 @@
     <% end %>
     <div class='row'>
       <div class='col-md-8'>
-        <table class='table table-bordered'>
+        <table class='table table-bordered table-hover'>
           <thead>
             <tr>
               <td>郵便番号</td>
@@ -39,8 +39,8 @@
               <td><%= address.address %></td>
               <td><%= address.dear_name %></td>
               <td>
-                <%= link_to '編集する', edit_address_path(address), class: "btn btn-sm btn-success edit_address_path_#{address.id}" %>
-                <%= link_to '削除する', address_path(address), method: :delete, class: "btn btn-sm btn-danger destroy_address_#{address.id}"%>
+                <%= link_to '編集する', edit_address_path(address), class: "btn btn-sm btn-outline-success edit_address_path_#{address.id}" %>
+                <%= link_to '削除する', address_path(address), method: :delete, class: "btn btn-sm btn-outline-danger destroy_address_#{address.id}"%>
               </td>
             </tr>
             <% end %>

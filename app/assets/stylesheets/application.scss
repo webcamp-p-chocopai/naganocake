@@ -68,6 +68,11 @@ main{
   width: 250px;
  }
 
+footer {
+  background-color: #bc8f8f;
+}
+
+
 @media screen and (max-width: 991px) {
   .navbar {
     flex-direction: column;
