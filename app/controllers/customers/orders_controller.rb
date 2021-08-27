@@ -1,9 +1,8 @@
 class Customers::OrdersController < ApplicationController
     before_action :authenticate_customer!
   def index
-    @customer = current_customer
-    @orders = @customer.orders
-    @order = Order.page(params[:page]).per(10)
+    @all_orders = current_customer.orders
+    @orders =  @all_orders.page(params[:page]).per(10).reverse_order
     @freight = 800
   end
 
