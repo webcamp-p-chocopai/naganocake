@@ -10,38 +10,38 @@
             <td>(性)<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control form-control-md w-100" %></td>
             <td>(名)<%= f.text_field :first_name, autocomplete: "first_name", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
-          
+
           <tr>
             <td><%= f.label :フリガナ, class: "float-left" %></td>
             <td>(セイ)<%= f.text_field :kana_last_name, autocomplete: "kana_last_name", class: "form-control form-control-md w-100" %></td>
             <td>(メイ)<%= f.text_field :kana_first_name, autocomplete: "kana_first_name", class: "form-control form-control-md w-100" %></td>
           </tr>
-      
+
           <tr>
             <td><%= f.label :メールアドレス, class: "float-left" %></td>
             <td><%= f.email_field :email, autocomplete: "email", class: "col-auto form-control form-control-md w-100" %></td>
            </tr>
-      
+
           <tr>
             <td><%= f.label :郵便番号（ハイフンなし）, class: "float-left" %></td>
             <td><%= f.text_field :cust_postal_code, autocomplete: "cust_postal_code", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
-      
+
           <tr>
             <td><%= f.label :住所, class: "float-left" %></td>
             <td><%= f.text_field :cust_address, autocomplete: "cust_address", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
-          
+
           <tr>
             <td><%= f.label :電話番号（ハイフンなし）, class: "float-left" %></td>
             <td><%= f.text_field :phone_number, autocomplete: "phone_number", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
-          
+
           <tr>
             <td><%= f.label :パスワード６文字以上, class: "float-left" %></td>
-            <td><%= f.password_field :password, autocomplete: "new-password", class: "col-auto form-control form-control-md w-100" %></td>    
+            <td><%= f.password_field :password, autocomplete: "new-password", class: "col-auto form-control form-control-md w-100" %></td>
           </tr>
-      
+
           <tr>
             <td><%= f.label :パスワード（確認用）, class: "float-left" %></td>
             <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-auto form-control form-control-md w-100" %></td>
@@ -49,7 +49,7 @@
 
           <tr>
             <td></td>
-            <td><%= f.submit "新規登録", class: "btn btn-outline--primary col-md-12" %></td>
+            <td><%= f.submit "新規登録", class: "btn btn-outline-primary col-md-12" %></td>
           </tr>
         </table>
         <% end %>
