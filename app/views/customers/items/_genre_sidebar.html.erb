@@ -1,0 +1,19 @@
+<table class="table table-bordered table-hover" style="text-align: center; background-color: #c4a3bf;">
+  <thead>
+    <tr>
+      <th class="" style="color: #6a1917;">ジャンル検索</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= link_to "ALL ITEMS", items_path, :style=> "color: #8f2e14;" %></td>
+    </tr>
+    <% genres.each do |genre| %>
+    <tr>
+      <td>
+        <%= link_to genre.genre_name, search_path(genre.id), :style=> "color: #96514d;" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

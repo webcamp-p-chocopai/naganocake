@@ -1,0 +1,72 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-5'>
+      <h3>注文情報</h3>
+        <table class='table table-bordered table-hover'>
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td>配送先</td>
+            <td>
+              <%= @order.postal_code %><br>
+              <%= @order.dear_address %><br>
+              <%= @order.dear_name %>
+            </td>
+          </tr>
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.method_of_payment %></td>
+          </tr>
+          <tr>
+            <td>ステータス</td>
+            <td><%= @order.orderd_status %></td>
+          </tr>
+        </table>
+    </div>
+    <div class='col-md-3'>
+      <h3>請求金額</h3>
+      <table class='table table-bordered table-hover'>
+        <tr>
+          <td>商品合計</td>
+          <td><%= @order.taxed_billing_price %></td>
+        <tr>
+          <tr>
+          <td>配送料</td>
+          <td><%= @freight %></td>
+        </tr>
+        <tr>
+          <td>ご請求金額</td>
+          <!--送料を足す調べる-->
+          <td><%= (@order.taxed_billing_price) + (@freight) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-8'>
+      <h3>注文内容</h3>
+      <table class='table table-bordered table-hover'>
+        <thead>
+          <tr>
+            <td>商品</td>
+            <td>単価（税込）</td>
+            <td>個数</td>
+            <td>小計</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_items.each do |order_item| %>
+            <tr>
+              <td><%= order_item.item.item_name %></td>
+              <td><%= (order_item.item.non_taxed_price * 1.1).floor %></td>
+              <td><%= order_item.purchase_quantity %></td>
+              <td><%= (order_item.item.non_taxed_price * 1.1).floor * (order_item.purchase_quantity) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<div>

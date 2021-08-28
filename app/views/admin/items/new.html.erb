@@ -1,0 +1,45 @@
+<div class="container mt-4">
+ <h4 class="p-3 mb-2 w-25 text-center" style="color: #494949; background: #80aba9; border-left: solid 5px #2f4f4f;">商品新規登録</h4>
+</div>
+
+      <div class="container", style="margin-left: 30rem;">
+       <div class="row">
+        <div class="col-md-6">
+        <%= form_with model:@item,url:admin_items_path, local:true do |f| %>
+        <table class='table table-borderless'>
+          <tr>
+           <td><%= f.label :商品画像 ,class: "col-xs-3" %></td>
+           <td><%= f.attachment_field :item_image, autofocus: true, autocomplete: "item_image" , class: "col-xs-8" %></td>
+          </tr>
+          <tr>
+           <td><%= f.label :商品名 ,class: "col-xs-3" %></td>
+           <td><%= f.text_field :item_name, autofocus: true, autocomplete: "item_name" , placeholder: "商品名", class: "col-auto form-control form-control-md w-100" %></td>
+          </tr>
+          <tr>
+           <td><%= f.label :商品説明 ,class: "col-xs-3" %></td>
+           <td><%= f.text_area :item_explanation, autofocus: true, autocomplete: "explanation" , placeholder: "ここに説明文を記述します", class: "col-auto form-control form-control-md w-100" %></td>
+          </tr>
+          <tr>
+           <td><%= f.label :ジャンル ,class: "col-xs-3 fix" %></td>
+           <td><%= f.collection_select(:genre_id, @genres, :id, :genre_name,:prompt => "--選択してください--") %></td>
+          </tr>
+          <tr>
+           <td><%= f.label :税抜価格 ,class: "col-xs-3 block"  %></td>
+           <td><%= f.text_field :non_taxed_price, autofocus: true, autocomplete: "non_taxed_price" , placeholder: "1000", class: "col-auto form-control form-control-md w-50" %></td>
+          </tr>
+          <tr>
+           <td><%= f.label :販売ステータス  ,class: "col-xs-3 fix" %></td>
+           <td>
+            <%= f.radio_button :sale_status, :true %> 販売中
+            <%= f.radio_button :sale_status, :false %> 販売停止中
+           </td>
+          </tr>
+          <tr>
+           <td></td>
+           <td><%= f.submit "新規登録", class: "btn btn-outline-success" %></td>
+          </tr>
+        </table>
+        <% end %>
+        </div>
+      </div>
+    </div>

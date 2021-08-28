@@ -1,0 +1,53 @@
+<!-- 注文情報入力画面-->
+<div class="container">
+  <div class="row m-2">
+    <h2 class="mt-4 mb-3 col-6 text-center" style="background-color:#a99e93;">注文情報入力</h2>
+  </div>
+  <div class="row">
+  <%= form_with model: @order, url: orders_check_path, method: :post, local: true do |f| %>
+    <h5><strong>支払い方法</strong></h5>
+    <div class="ml-5">
+      <!--ラジオボタン実装-->
+      <label><%= f.radio_button :method_of_payment, "クレジットカード支払い", checked: true %><u>クレジットカード</u></label><br>
+      <label><%= f.radio_button :method_of_payment, "銀行振込" %><u>銀行振込</u></label>
+    </div>
+    <h5 class="mt-3"><strong>お届け先</strong></h5>
+    <div class="ml-5">
+      <!--ご自身の住所-->
+      <label><%= f.radio_button :address_op, "1", checked: true %><u>ご自身の住所</u></label><br>
+      <p class="ml-4">〒<%= current_customer.cust_postal_code %>&emsp;<%= current_customer.cust_address %>&emsp;
+      <%= current_customer.last_name %><%= current_customer.first_name %><br></p>
+    </div>
+    <div class="ml-5">
+      <!--登録済み住所から選択(all_addressはaddressモデルに定義している)-->
+      <label><%= f.radio_button :address_op, "2" %><u>登録済み住所から選択</u></label><br>
+      <p class="ml-4"><%= f.collection_select(:address, current_customer.addresses.all, :id, :all_address)%></p><br>
+    </div>
+    <div class="ml-5">
+    <!-- 新しいお届け先を設定-->
+    <label><%= f.radio_button :address_op, "3" %><u>新しいお届け先</u></label><br>
+    <table class="ml-4">
+      <tr>
+        <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+        <td><%= f.text_field :new_postal_code %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"住所" %></th>
+        <td><%= f.text_field :new_address, class: "" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"宛名" %></th>
+        <td><%= f.text_field :new_dear_name %></td>
+      </tr>
+    </table>
+    </div>
+    <div class="row ml-5">
+      <div class="col-8 ml-5">
+        <%= f.submit "確認画面へ進む", class: "col-9 mt-5 btn-outline-success"%>
+        <%= link_to "カート画面へ戻る", cart_items_path, class: "col-9 my-4 btn btn-outline-primary"%>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+

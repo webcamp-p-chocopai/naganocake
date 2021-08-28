@@ -1,0 +1,60 @@
+<div class="mx-auto container">
+  <div class="form-group form-inline row">
+    <div class='col-md-8 mt-4'>
+    <h4 class="p-3 mb-2 w-50 text-center" style="color: #494949; background: #80aba9; border-left: solid 5px #2f4f4f;"><%= @customer.full_name %>さんの会員情報編集</h4>
+      <%= form_with model: @customer, url: admin_customer_path, local: true do |f| %>
+      <table class="table  table-borderless">
+        <tr>
+          <td><%= f.label:会員ID , class: "float-left" %></td>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <td><%= f.label:氏名, class: "float-left" %></td>
+          <td><%= f.text_field :last_name, class:"form-control" %></td>
+          <td><%= f.text_field :first_name, class:"form-control" %></td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :フリガナ, class: "float-left" %></td>
+          <td><%= f.text_field :kana_last_name, class:"form-control" %></td>
+          <td><%= f.text_field :kana_first_name, class:"form-control" %></td>
+        </tr>
+ 
+        <tr>
+          <td><%= f.label :郵便番号 , class: "float-left" %></td>
+          <td><%= f.text_field :cust_postal_code, class:"form-control" %></td>
+        </tr>
+      
+        <tr>
+          <td><%= f.label :住所, class: "float-left" %></td>
+          <td><%= f.text_field :cust_address, class:"form-control" %></td>
+        </tr>
+      
+        <tr>
+          <td><%= f.label :電話番号, class: "float-left" %></td>
+          <td><%= f.text_field :phone_number, class:"form-control" %></td>
+        </tr>
+      
+        <tr>
+          <!-- フォームの幅 -->
+          <td><%= f.label :メールアドレス, class: "float-left" %></td>
+          <td><%= f.email_field :email, class:"form-control" %><td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :"会員ステータス", class: "float-left" %></td>
+          <td> 
+            <%= f.radio_button :is_deleted, false %><span class='mr-3'> 有効 </span>
+            <%= f.radio_button :is_deleted, true %><span> 退会 </span>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><%= f.submit "変更を保存", class: "btn btn-outline-success" %></td>
+        </tr>
+        </table>
+      </div>
+      <% end %>
+    </div>
+  </div>

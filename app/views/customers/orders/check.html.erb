@@ -1,0 +1,94 @@
+<!-- 注文情報確認画面　-->
+<div class="container px-5">
+  <div class="row mt-4 mb-2">
+    <div class="col-8">
+		 <h3 style=" text-align: center; background-color:#a99e93;">注文情報確認</h3>
+		 <table class="table table-bordered table-hover mt-4">
+		   <thead class="" style="background-color: #9d8e87;">
+		     <tr>
+           <th>商品名</th>
+           <th>単価(税込み)</th>
+           <th>数量</th>
+           <th>小計</th>
+         </tr>
+		   </thead>
+      <tbody>
+      <% @cart_items.each do |cart_items| %>
+      <tr>
+        <td>
+          <%= attachment_image_tag cart_items.item, :item_image, format: 'jpg', fallback: "no_image.jpg", size: "100x80" %>
+          <%= cart_items.item.item_name %>
+        </td>
+        <td>
+          @<%= (cart_items.item.non_taxed_price * 1.1).floor.to_s(:delimited) %>
+        </td>
+        <td>
+          <%= cart_items.item_qty %>
+        </td>
+        <td>
+          ¥<%= ((cart_items.item.non_taxed_price * 1.1).floor * cart_items.item_qty).to_s(:delimited) %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+	  </div>
+	  <div class="col-4 mt-5">
+	    <table class="table table-bordered table-hover">
+        <tr>
+          <th>送料</th>
+          <td>¥<%= @freight.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td>¥<%= @total_price.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td>¥<%= (@total_price + @freight).to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th><strong>支払方法</strong></th>
+            <td><%= @order.method_of_payment %></td>
+          </tr>
+          <tr>
+            <th><strong>お届け先</strong></th>
+            <td>
+              〒<%= @order.postal_code %>
+              <%= @order.dear_address %><br>
+              <%= @order.dear_name %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+		<div class="col-4 offset-4">
+		  <div class="text-center">
+		    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+          <%= f.hidden_field :customer_id, :value => @current_customer.id %>
+          <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+          <%= f.hidden_field :dear_address, :value => @order.dear_address%>
+          <%= f.hidden_field :dear_name, :value => @order.dear_name %>
+          <%= f.hidden_field :method_of_payment, :value => @order.method_of_payment %>
+          <%= f.hidden_field :freight, :value => @freight %>
+          <%= f.hidden_field :taxed_billing_price, :value => @total_price %>
+          <%= f.hidden_field :orderd_status, :value => "入金待ち" %>
+          <%= f.submit "注文を確定する", class: "btn btn-outline-success" %>
+        <% end %>
+		  </div><br>
+		  <div class=" offset-3">
+		    <%= link_to "情報入力画面に戻る", new_order_path, class: "btn btn-outline-primary" %>
+		  </div>
+		</div>
+	</div>
+</div>
+
